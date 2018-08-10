@@ -1,5 +1,7 @@
 package com.ifpb.biblioteca.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -11,17 +13,19 @@ import java.util.Objects;
 public class Livro {
     private String titulo;
     private int codigo;
-    private String genero; //Passar para Enum?
-    private String autor;
+    private Genero genero;
+    private String editora;
+    private List<Autor> autores;
     private String descricao;
     private boolean status;
 
 
-    public Livro(String titulo, int codigo, String genero, String autor, String descricao) {
+
+    public Livro(String titulo, int codigo, Genero genero, List<Autor> autores, String descricao) {
         this.titulo = titulo;
         this.codigo = codigo;
         this.genero = genero;
-        this.autor = autor;
+        autores = new ArrayList<Autor>();
         this.descricao = descricao;
         this.status = false;
     }
@@ -42,20 +46,39 @@ public class Livro {
         this.codigo = codigo;
     }
 
-    public String getGenero() {
+    public Genero getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(Genero genero) {
         this.genero = genero;
     }
 
-    public String getAutor() {
-        return autor;
+
+    public void setGenero(int genero) {
+        if (genero == Genero.ROMANCE.getID()) {
+            setGenero(Genero.ROMANCE);
+        } else if (genero == Genero.TERROR.getID()) {
+            setGenero(Genero.TERROR);
+        } else if (genero == Genero.POESIA.getID()) {
+            setGenero(Genero.POESIA);
+        } else if (genero == Genero.FANTASIA.getID()){
+            setGenero(Genero.FANTASIA);
+        } else if (genero == Genero.AVENTURA.getID()){
+        setGenero(Genero.AVENTURA);
+        } else if (genero == Genero.BIOGRAFIA.getID()){
+        setGenero(Genero.BIOGRAFIA);
+        } else if (genero == Genero.DIDATICO.getID()){
+        setGenero(Genero.DIDATICO);
+    }
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
+    public List<Autor> getAutores() {
+        return autores;
+    }
+
+    public void setAutores(List<Autor> autores) {
+        this.autores = autores;
     }
 
     public String getDescricao() {
@@ -74,17 +97,7 @@ public class Livro {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Livro{" +
-                "titulo='" + titulo + '\'' +
-                ", codigo=" + codigo +
-                ", genero='" + genero + '\'' +
-                ", autor='" + autor + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", status=" + status +
-                '}';
-    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -99,4 +112,18 @@ public class Livro {
 
         return Objects.hash(codigo);
     }
+
+    @Override
+    public String toString() {
+        return "Livro{" +
+                "titulo='" + titulo + '\'' +
+                ", codigo=" + codigo +
+                ", genero=" + genero +
+                ", editora='" + editora + '\'' +
+                ", autores=" + autores +
+                ", descricao='" + descricao + '\'' +
+                ", status=" + status +
+                '}';
+    }
+
 }

@@ -73,4 +73,8 @@ public class Cliente {
 
         return Objects.hash(matricula);
     }
+
+    public boolean autentication(String email, String senha){
+        return Objects.equals(this.email, email) && Objects.equals(this.senha, senha);
+    }
 }
