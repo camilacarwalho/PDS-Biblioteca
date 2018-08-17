@@ -15,24 +15,12 @@
       <file leaf-file-name="Livro.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Livro.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
+            <state relative-caret-position="1575">
               <caret line="127" selection-start-line="127" selection-end-line="127" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1074#1075#0" expanded="true" />
-                <element signature="e#1108#1109#0" expanded="true" />
                 <element signature="e#1904#1905#0" expanded="true" />
-                <element signature="e#1933#1934#0" expanded="true" />
-                <element signature="e#1982#1983#0" expanded="true" />
-                <element signature="e#2018#2019#0" expanded="true" />
-                <element signature="e#1901#1902#0" expanded="true" />
-                <element signature="e#1933#1934#0" expanded="true" />
-                <element signature="e#1983#1984#0" expanded="true" />
-                <element signature="e#2025#2026#0" expanded="true" />
-                <element signature="e#2058#2059#0" expanded="true" />
-                <element signature="e#2087#2088#0" expanded="true" />
-                <element signature="e#2132#2133#0" expanded="true" />
-                <element signature="e#2168#2169#0" expanded="true" />
+                <element signature="e#1934#1935#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -42,7 +30,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/view/App.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -52,17 +40,11 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
               <caret line="3" column="89" selection-start-line="3" selection-start-column="89" selection-end-line="3" selection-end-column="89" />
-              <folding>
-                <element signature="e#305#306#0" expanded="true" />
-                <element signature="e#333#334#0" expanded="true" />
-                <element signature="e#534#535#0" expanded="true" />
-                <element signature="e#559#560#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LivroDAO.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LivroDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/dao/LivroDAO.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
@@ -71,36 +53,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Estante.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Estante.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="5" lean-forward="true" selection-start-line="12" selection-start-column="3" selection-end-line="18" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#155#156#0" expanded="true" />
-                <element signature="e#183#184#0" expanded="true" />
-                <element signature="e#267#268#0" expanded="true" />
-                <element signature="e#296#297#0" expanded="true" />
-                <element signature="e#345#346#0" expanded="true" />
-                <element signature="e#381#382#0" expanded="true" />
-                <element signature="e#722#723#0" expanded="true" />
-                <element signature="e#766#767#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Autor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Autor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
+            <state relative-caret-position="510">
               <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
               <folding>
-                <element signature="e#252#253#0" expanded="true" />
                 <element signature="e#279#280#0" expanded="true" />
-                <element signature="e#319#320#0" expanded="true" />
-                <element signature="e#351#352#0" expanded="true" />
+                <element signature="e#306#307#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -115,11 +75,53 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Estante.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Estante.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#183#184#0" expanded="true" />
+                <element signature="e#229#230#0" expanded="true" />
+                <element signature="e#267#268#0" expanded="true" />
+                <element signature="e#296#297#0" expanded="true" />
+                <element signature="e#345#346#0" expanded="true" />
+                <element signature="e#381#382#0" expanded="true" />
+                <element signature="e#722#723#0" expanded="true" />
+                <element signature="e#762#763#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Clientes.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Clientes.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#174#175#0" expanded="true" />
+                <element signature="e#233#234#0" expanded="true" />
+                <element signature="e#275#276#0" expanded="true" />
+                <element signature="e#306#307#0" expanded="true" />
+                <element signature="e#361#362#0" expanded="true" />
+                <element signature="e#401#402#0" expanded="true" />
+                <element signature="e#976#977#0" expanded="true" />
+                <element signature="e#1020#1021#0" expanded="true" />
+                <element signature="e#1137#1138#0" expanded="true" />
+                <element signature="e#1177#1178#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Cliente.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Cliente.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="825">
-              <caret line="71" column="27" lean-forward="true" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
+              <caret line="71" column="27" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
               <folding>
                 <element signature="e#1013#1014#0" expanded="true" />
                 <element signature="e#1041#1042#0" expanded="true" />
@@ -133,8 +135,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -148,6 +150,7 @@
         <option value="$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Cliente.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Livro.java" />
         <option value="$PROJECT_DIR$/src/com/ifpb/biblioteca/dao/LivroDAO.java" />
+        <option value="$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Clientes.java" />
       </list>
     </option>
   </component>
@@ -162,7 +165,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -199,8 +204,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -277,6 +280,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1366" height="741" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -285,8 +289,8 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3291536" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
@@ -295,8 +299,8 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -311,24 +315,172 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Livro.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1515">
+          <caret line="127" selection-start-line="127" selection-end-line="127" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1904#1905#0" expanded="true" />
+            <element signature="e#1934#1935#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/view/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Genero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="89" selection-start-line="3" selection-start-column="89" selection-end-line="3" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/dao/LivroDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="56" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Estante.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="18" column="5" selection-start-line="12" selection-start-column="3" selection-end-line="18" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#183#184#0" expanded="true" />
+            <element signature="e#229#230#0" expanded="true" />
+            <element signature="e#267#268#0" expanded="true" />
+            <element signature="e#296#297#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+            <element signature="e#381#382#0" expanded="true" />
+            <element signature="e#722#723#0" expanded="true" />
+            <element signature="e#762#763#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Autor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+          <folding>
+            <element signature="e#279#280#0" expanded="true" />
+            <element signature="e#306#307#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/dao/ClienteDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Cliente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1065">
+          <caret line="71" column="27" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
+          <folding>
+            <element signature="e#1013#1014#0" expanded="true" />
+            <element signature="e#1041#1042#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Livro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1515">
+          <caret line="127" selection-start-line="127" selection-end-line="127" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1904#1905#0" expanded="true" />
+            <element signature="e#1934#1935#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/view/App.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Genero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="89" selection-start-line="3" selection-start-column="89" selection-end-line="3" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Estante.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="18" column="5" lean-forward="true" selection-start-line="12" selection-start-column="3" selection-end-line="18" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#183#184#0" expanded="true" />
+            <element signature="e#229#230#0" expanded="true" />
+            <element signature="e#267#268#0" expanded="true" />
+            <element signature="e#296#297#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+            <element signature="e#381#382#0" expanded="true" />
+            <element signature="e#722#723#0" expanded="true" />
+            <element signature="e#762#763#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Autor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+          <folding>
+            <element signature="e#279#280#0" expanded="true" />
+            <element signature="e#306#307#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/dao/ClienteDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Cliente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="71" column="27" lean-forward="true" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
+          <folding>
+            <element signature="e#1013#1014#0" expanded="true" />
+            <element signature="e#1041#1042#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/dao/LivroDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="56" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Livro.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1074#1075#0" expanded="true" />
-            <element signature="e#1108#1109#0" expanded="true" />
             <element signature="e#1904#1905#0" expanded="true" />
-            <element signature="e#1933#1934#0" expanded="true" />
-            <element signature="e#1982#1983#0" expanded="true" />
-            <element signature="e#2018#2019#0" expanded="true" />
-            <element signature="e#1901#1902#0" expanded="true" />
-            <element signature="e#1933#1934#0" expanded="true" />
-            <element signature="e#1983#1984#0" expanded="true" />
-            <element signature="e#2025#2026#0" expanded="true" />
-            <element signature="e#2058#2059#0" expanded="true" />
-            <element signature="e#2087#2088#0" expanded="true" />
-            <element signature="e#2132#2133#0" expanded="true" />
-            <element signature="e#2168#2169#0" expanded="true" />
+            <element signature="e#1934#1935#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -345,10 +497,8 @@
         <state relative-caret-position="30">
           <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
           <folding>
-            <element signature="e#252#253#0" expanded="true" />
             <element signature="e#279#280#0" expanded="true" />
-            <element signature="e#319#320#0" expanded="true" />
-            <element signature="e#351#352#0" expanded="true" />
+            <element signature="e#306#307#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -377,14 +527,14 @@
           <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#155#156#0" expanded="true" />
             <element signature="e#183#184#0" expanded="true" />
+            <element signature="e#229#230#0" expanded="true" />
             <element signature="e#267#268#0" expanded="true" />
             <element signature="e#296#297#0" expanded="true" />
             <element signature="e#345#346#0" expanded="true" />
             <element signature="e#381#382#0" expanded="true" />
             <element signature="e#722#723#0" expanded="true" />
-            <element signature="e#766#767#0" expanded="true" />
+            <element signature="e#762#763#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -421,10 +571,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Livro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1575">
+          <caret line="127" selection-start-line="127" selection-end-line="127" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1904#1905#0" expanded="true" />
+            <element signature="e#1934#1935#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/view/App.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
@@ -432,29 +594,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="89" selection-start-line="3" selection-start-column="89" selection-end-line="3" selection-end-column="89" />
-          <folding>
-            <element signature="e#305#306#0" expanded="true" />
-            <element signature="e#333#334#0" expanded="true" />
-            <element signature="e#534#535#0" expanded="true" />
-            <element signature="e#559#560#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Estante.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/dao/LivroDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="12" selection-start-column="3" selection-end-line="18" selection-end-column="5" />
+        <state relative-caret-position="45">
+          <caret line="3" column="56" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Autor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#155#156#0" expanded="true" />
-            <element signature="e#183#184#0" expanded="true" />
-            <element signature="e#267#268#0" expanded="true" />
-            <element signature="e#296#297#0" expanded="true" />
-            <element signature="e#345#346#0" expanded="true" />
-            <element signature="e#381#382#0" expanded="true" />
-            <element signature="e#722#723#0" expanded="true" />
-            <element signature="e#766#767#0" expanded="true" />
+            <element signature="e#279#280#0" expanded="true" />
+            <element signature="e#306#307#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -462,7 +618,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Cliente.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="825">
-          <caret line="71" column="27" lean-forward="true" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
+          <caret line="71" column="27" selection-start-line="71" selection-start-column="27" selection-end-line="71" selection-end-column="27" />
           <folding>
             <element signature="e#1013#1014#0" expanded="true" />
             <element signature="e#1041#1042#0" expanded="true" />
@@ -477,47 +633,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Autor.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Estante.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="18" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
-          <folding>
-            <element signature="e#252#253#0" expanded="true" />
-            <element signature="e#279#280#0" expanded="true" />
-            <element signature="e#319#320#0" expanded="true" />
-            <element signature="e#351#352#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Livro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="127" selection-start-line="127" selection-end-line="127" />
+        <state relative-caret-position="390">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1074#1075#0" expanded="true" />
-            <element signature="e#1108#1109#0" expanded="true" />
-            <element signature="e#1904#1905#0" expanded="true" />
-            <element signature="e#1933#1934#0" expanded="true" />
-            <element signature="e#1982#1983#0" expanded="true" />
-            <element signature="e#2018#2019#0" expanded="true" />
-            <element signature="e#1901#1902#0" expanded="true" />
-            <element signature="e#1933#1934#0" expanded="true" />
-            <element signature="e#1983#1984#0" expanded="true" />
-            <element signature="e#2025#2026#0" expanded="true" />
-            <element signature="e#2058#2059#0" expanded="true" />
-            <element signature="e#2087#2088#0" expanded="true" />
-            <element signature="e#2132#2133#0" expanded="true" />
-            <element signature="e#2168#2169#0" expanded="true" />
+            <element signature="e#183#184#0" expanded="true" />
+            <element signature="e#229#230#0" expanded="true" />
+            <element signature="e#267#268#0" expanded="true" />
+            <element signature="e#296#297#0" expanded="true" />
+            <element signature="e#345#346#0" expanded="true" />
+            <element signature="e#381#382#0" expanded="true" />
+            <element signature="e#722#723#0" expanded="true" />
+            <element signature="e#762#763#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/dao/LivroDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ifpb/biblioteca/model/Clientes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="56" selection-start-line="3" selection-start-column="56" selection-end-line="3" selection-end-column="56" />
+        <state relative-caret-position="408">
+          <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#174#175#0" expanded="true" />
+            <element signature="e#233#234#0" expanded="true" />
+            <element signature="e#275#276#0" expanded="true" />
+            <element signature="e#306#307#0" expanded="true" />
+            <element signature="e#361#362#0" expanded="true" />
+            <element signature="e#401#402#0" expanded="true" />
+            <element signature="e#976#977#0" expanded="true" />
+            <element signature="e#1020#1021#0" expanded="true" />
+            <element signature="e#1137#1138#0" expanded="true" />
+            <element signature="e#1177#1178#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
