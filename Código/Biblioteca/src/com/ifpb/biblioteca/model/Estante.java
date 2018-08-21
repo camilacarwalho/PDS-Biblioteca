@@ -2,6 +2,10 @@ package com.ifpb.biblioteca.model;
 
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * @author Camila
+ *  Lista de livros;
+ */
 
 public class Estante {
     private List<Livro> livros;
@@ -35,6 +39,5 @@ public class Estante {
     public void editaLivro(Livro livro, int indice){
         livros.set(indice,livro);
     }
-    //Sujeito a mudanças na segunda fase;
 
 }

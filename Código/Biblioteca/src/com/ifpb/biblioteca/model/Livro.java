@@ -14,18 +14,17 @@ public class Livro {
     private String titulo;
     private int codigo;
     private Genero genero;
-    private String editora;
-    private List<Autor> autores;
+    private Autor autor;
     private String descricao;
     private boolean status;
 
 
 
-    public Livro(String titulo, int codigo, Genero genero, List<Autor> autores, String descricao) {
+    public Livro(String titulo, int codigo, Genero genero, Autor autor, String descricao) {
         this.titulo = titulo;
         this.codigo = codigo;
         this.genero = genero;
-        autores = new ArrayList<Autor>();
+        this.autor = autor;
         this.descricao = descricao;
         this.status = false;
     }
@@ -73,12 +72,12 @@ public class Livro {
     }
     }
 
-    public List<Autor> getAutores() {
-        return autores;
+    public Autor getAutor() {
+        return autor;
     }
 
-    public void setAutores(List<Autor> autores) {
-        this.autores = autores;
+    public void setAutores(Autor autor) {
+        this.autor = autor;
     }
 
     public String getDescricao() {
@@ -95,6 +94,12 @@ public class Livro {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    public String isDisponivel(){
+        if (status == false ){
+            return "disponível";
+        } else return "indisponível";
     }
 
 
@@ -116,13 +121,12 @@ public class Livro {
     @Override
     public String toString() {
         return "Livro{" +
-                "titulo='" + titulo + '\'' +
-                ", codigo=" + codigo +
-                ", genero=" + genero +
-                ", editora='" + editora + '\'' +
-                ", autores=" + autores +
-                ", descricao='" + descricao + '\'' +
-                ", status=" + status +
+                "Titulo='" + titulo + '\'' + '\n'+
+                ", Codigo=" + codigo  + '\n'+
+                ", Genero=" + genero + '\n'+
+                ", "+ autor + '\n'+
+                ", Descricao='" + descricao + '\'' + '\n'+
+                ", Status=" + isDisponivel()+ '\n'+
                 '}';
     }
 

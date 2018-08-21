@@ -3,6 +3,10 @@ package com.ifpb.biblioteca.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+/**
+ * @author Camila
+ * Lista de clientes.
+ */
 
 public class Clientes {
     private List<Cliente> clientes;
