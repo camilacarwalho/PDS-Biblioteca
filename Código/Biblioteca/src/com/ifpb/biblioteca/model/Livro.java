@@ -6,6 +6,7 @@ import java.util.Objects;
 
 /**
  * @author Camila
+ *
  * O objeto do tipo Livro a ser cadastrado no sistema.
  */
 //Rever status
@@ -120,14 +121,14 @@ public class Livro {
 
     @Override
     public String toString() {
-        return "Livro{" +
-                "Titulo='" + titulo + '\'' + '\n'+
-                ", Codigo=" + codigo  + '\n'+
-                ", Genero=" + genero + '\n'+
-                ", "+ autor + '\n'+
-                ", Descricao='" + descricao + '\'' + '\n'+
-                ", Status=" + isDisponivel()+ '\n'+
-                '}';
+        return ".-----------------------------------------.\n" +
+                "Titulo:" + titulo + '\n'+
+                "Codigo:" + codigo  + '\n'+
+                "Genero:" + genero + '\n'+
+                ""+ autor + '\n'+
+                "Descrição:'" + descricao + '\'' + '\n'+
+                "Status:" + isDisponivel()+ '\n'+
+                ".-----------------------------------------.\n";
     }
 
 }
