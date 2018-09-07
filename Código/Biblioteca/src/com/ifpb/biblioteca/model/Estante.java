@@ -10,7 +10,7 @@ import java.util.List;
 public class Estante {
     private List<Livro> livros;
 
-    public Estante(List<Livro> livros) {
+    public Estante() {
        livros = new ArrayList<Livro>();
     }
 
@@ -33,11 +33,20 @@ public class Estante {
         livros.add(livro);
     }
 
-    public void removeLivro(Livro livro) {
-        livros.remove(livro);}
+    public boolean isEmpty(){
+        return livros.isEmpty();
+    }
+    public int size(){
+        return livros.size();
+    }
+    public void removeLivro(int index) {
+        livros.remove(index);}
 
     public void editaLivro(Livro livro, int indice){
         livros.set(indice,livro);
+    }
+    public void atualizar(int index, Livro novo){
+        livros.set(index, novo);
     }
 
 }
