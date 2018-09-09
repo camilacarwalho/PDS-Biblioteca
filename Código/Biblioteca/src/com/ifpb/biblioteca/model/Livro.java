@@ -27,7 +27,7 @@ public class Livro {
         this.genero = genero;
         this.autor = autor;
         this.descricao = descricao;
-        this.status = false;
+        status = false;
     }
 
     public String getTitulo() {
@@ -121,7 +121,11 @@ public class Livro {
 
     @Override
     public String toString() {
-        return ".-----------------------------------------.\n" +
+        String S="";
+        if(status){
+            S+="                INDISPONIVEL                \n";
+        }
+        return S+".-----------------------------------------.\n" +
                 "Titulo:" + titulo + '\n'+
                 "Codigo:" + codigo  + '\n'+
                 "Genero:" + genero + '\n'+

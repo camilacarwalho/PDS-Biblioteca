@@ -14,11 +14,12 @@ public class Cliente {
     private String cpf;
     private String email;
     private String senha;
+    private static int codigoCliente;
 
 
-    public Cliente(String nome, int matricula, String cpf, String email, String senha) {
+    public Cliente(String nome, String cpf, String email, String senha) {
+        matricula = ++codigoCliente;
         this.nome = nome;
-        this.matricula = matricula;
         this.cpf = cpf;
         this.email = email;
         this.senha = senha;

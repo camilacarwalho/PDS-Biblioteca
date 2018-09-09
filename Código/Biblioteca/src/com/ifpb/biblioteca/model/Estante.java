@@ -22,13 +22,6 @@ public class Estante {
         this.livros = livros;
     }
 
-    @Override
-    public String toString() {
-        return "Estante{" +
-                "livros=" + livros +
-                '}';
-    }
-
     public void addLivro(Livro livro) {
         livros.add(livro);
     }
@@ -36,17 +29,30 @@ public class Estante {
     public boolean isEmpty(){
         return livros.isEmpty();
     }
+
     public int size(){
         return livros.size();
     }
+
     public void removeLivro(int index) {
         livros.remove(index);}
 
     public void editaLivro(Livro livro, int indice){
         livros.set(indice,livro);
     }
-    public void atualizar(int index, Livro novo){
+
+    public void atualizar(int index, Livro novo) {
         livros.set(index, novo);
     }
 
+    public Livro selecionaIndex(int index){
+        return livros.get(index);
+    }
+
+    @Override
+    public String toString() {
+        return "Estante{" +
+                "livros=" + livros +
+                '}';
+    }
 }

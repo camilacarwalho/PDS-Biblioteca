@@ -9,10 +9,11 @@ import java.util.Objects;
 public class Autor {
     private String nome;
     private int codAutor;
+    private static int codigo;
 
-    public Autor(String nome, int codAutor) {
+    public Autor(String nome) {
         this.nome = nome;
-        this.codAutor = ++codAutor;
+        codAutor = ++codigo;
     }
 
     public String getNome() {
@@ -21,6 +22,12 @@ public class Autor {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public int getCodAutor() { return codAutor; }
+
+    public void setCodAutor(int codAutor) {
+        this.codAutor = codAutor;
     }
 
     @Override

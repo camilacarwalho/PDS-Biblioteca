@@ -34,14 +34,11 @@ public class CadastroLivro {
     }
 
 
-    public String consulta(String codigo) {
-        List<Livro> livros = estante.getLivros();
-        for (Livro livro: livros) {
-            if(Objects.equals(codigo,livro.getCodigo())){
-                return livro.toString();
-            }
+    public Livro consulta(int index) {
+        if(index>estante.size()-1){
+            return null;
         }
-        return "Livro não cadastrado!!!";
+        return estante.selecionaIndex(index);
     }
 
 

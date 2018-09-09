@@ -55,7 +55,7 @@ public class CadastroCliente {
         if(index>cadastrados.size()-1){
             return false;
         }
-        cadastrados.add(index,novo);
+        cadastrados.set(index,novo);
         return true;
     }
 
