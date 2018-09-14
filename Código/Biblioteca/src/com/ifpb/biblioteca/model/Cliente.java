@@ -2,10 +2,6 @@ package com.ifpb.biblioteca.model;
 
 import java.util.Objects;
 
-/**
- * @author Camila
- * Objeto do tipo Cliente (com nome, matrícula, CPF, e-mail e senha) é cadastrado no sistema.
- */
 
 public class Cliente {
 

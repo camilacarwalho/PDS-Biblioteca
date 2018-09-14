@@ -2,10 +2,6 @@ package com.ifpb.biblioteca.model;
 
 import java.util.ArrayList;
 import java.util.List;
-/**
- * @author Camila
- *  Lista de livros;
- */
 
 public class Estante {
     private List<Livro> livros;

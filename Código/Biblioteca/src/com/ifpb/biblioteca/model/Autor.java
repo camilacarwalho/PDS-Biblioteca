@@ -1,10 +1,7 @@
 package com.ifpb.biblioteca.model;
 
 import java.util.Objects;
-/**
- * @author Camila
- * O objeto do tipo Autor, que será passado como parâmetro pra livro.
- */
+
 
 public class Autor {
     private String nome;
