@@ -112,8 +112,7 @@ public class ShowText {
         System.out.println(":.:.:.:.:.CADASTRO.:.:.:.:.:\n\n");
         System.out.println("           LIVRO            \n");
         System.out.println("Informe o titulo do livro:");
-        String titulo = scan.nextLine();
-        scan.nextLine();
+        String titulo = scan.next();
         System.out.println("Informe o códgo do livro:");
         int codigo = scan.nextInt();
         System.out.println("Selecione o genero:");

@@ -150,7 +150,7 @@ public class App {
 
 
     public static void limpaTela(){
-        for (int i=0; i<30;i++) System.out.println("\n");
+        for (int i=0; i<10;i++) System.out.println("\n");
 
     }
 
