@@ -1,14 +1,9 @@
 package com.ifpb.biblioteca.control;
 
-import com.ifpb.biblioteca.model.Cliente;
+import com.ifpb.biblioteca.model.Cliente;	
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
-
-import java.time.format.DateTimeFormatter;
 
 
 public class CadastroCliente {
@@ -26,8 +21,7 @@ public class CadastroCliente {
 
 
     public boolean cadastrar(Cliente novo) {
-        cadastrados.add(novo);
-        return true;
+        return cadastrados.add(novo);
     }
 
     public boolean autentication(String email, String senha) {

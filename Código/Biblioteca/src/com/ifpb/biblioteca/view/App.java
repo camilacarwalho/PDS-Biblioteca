@@ -1,15 +1,14 @@
 package com.ifpb.biblioteca.view;
 
-import com.ifpb.biblioteca.control.*;
-import com.ifpb.biblioteca.model.*;
-//Menu de teste incompleto
-import java.time.LocalDate;
-import java.util.Arrays;
+import com.ifpb.biblioteca.control.*;	
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) {
-        CadastroAutor crudAutor = new CadastroAutor();
+    private static CadastroAutor crudAutor;
+
+
+	public static void main(String[] args) {
+        setCrudAutor(new CadastroAutor());
         CadastroCliente crudCliente = new CadastroCliente();
         CadastroEmprestimos crudEmprestimo = new CadastroEmprestimos();
         CadastroLivro crudLivro = new CadastroLivro();
@@ -36,11 +35,11 @@ public class App {
             else{
                 switch(seleciona){
                     case 1:
-                        if(menu.login(crudFuncionario)){
+                        if(ShowText.login(crudFuncionario)){
                             System.out.println("Login feito com sucesso!!!");
                             boolean continuaMenu = true;
                             while(continuaMenu) {
-                                menu.menuFuncionario();
+                                ShowText.menuFuncionario();
                                 selecionaMenu = scan.nextInt();
                                 if(selecionaMenu<1||selecionaMenu>6){
                                     System.out.println("ERROR:Press ENTER para continar!");
@@ -51,7 +50,7 @@ public class App {
                                         case 1:
                                             System.out.println(crudLivro);
                                             break;
-                                        case 2: menu.readCliente(crudCliente);
+                                        case 2: ShowText.readCliente(crudCliente);
                                             break;
                                         case 3:  System.out.println("Digite novamente o seu email:");
                                                  String email = scan.next();
@@ -65,7 +64,7 @@ public class App {
                                             boolean continuaM = true;
                                             int index;
                                             while(continuaMenu){
-                                                menu.gerenciaEmprestimo();
+                                                ShowText.gerenciaEmprestimo();
                                                 int selecionaM = scan.nextInt();
                                                 if(selecionaM<1||selecionaM>6){
                                                     System.out.println("ERROR:Press ENTER para continar!");
@@ -78,7 +77,7 @@ public class App {
                                                             break;
                                                         case 2:
                                                             break;
-                                                        case 3: menu.doEmprestimo(crudLivro, crudCliente, crudEmprestimo);
+                                                        case 3: ShowText.doEmprestimo(crudLivro, crudCliente, crudEmprestimo);
                                                             break;
                                                         case 4:
                                                          continuaM = false;
@@ -92,7 +91,7 @@ public class App {
                                         case 5:  boolean continuaL = true;
                                             int indexL;
                                             while(continuaL){
-                                                menu.gerenciaLivros();
+                                                ShowText.gerenciaLivros();
                                                 int selecionaM = scan.nextInt();
                                                 if(selecionaM<1||selecionaM>5){
                                                     System.out.println("ERROR:Press ENTER para continar!");
@@ -101,7 +100,7 @@ public class App {
                                                 else{
                                                     switch(selecionaM){
                                                         case 1:
-                                                            menu.readLivro(crudLivro);
+                                                            ShowText.readLivro(crudLivro);
                                                             break;
                                                         case 2:
                                                             System.out.println("Selecione qual livro deseja deletar:");
@@ -134,7 +133,7 @@ public class App {
                         }else System.out.println("Funcionário não cadastrado!!!");
 
                         break;
-                    case 2: menu.readFuncionario(crudFuncionario);
+                    case 2: ShowText.readFuncionario(crudFuncionario);
 
                         break;
 
@@ -153,5 +152,15 @@ public class App {
         for (int i=0; i<10;i++) System.out.println("\n");
 
     }
+
+
+	public static CadastroAutor getCrudAutor() {
+		return crudAutor;
+	}
+
+
+	public static void setCrudAutor(CadastroAutor crudAutor) {
+		App.crudAutor = crudAutor;
+	}
 
 }

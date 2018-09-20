@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class CadastroAutor {
 
-    List<Autor> autores;
+    private List<Autor> autores;
 
     public CadastroAutor(){
         autores = new ArrayList<>();
@@ -19,9 +19,12 @@ public class CadastroAutor {
     }
 
     public boolean cadastrar(Autor novo) {
-        autores.add(novo);
-        System.out.println("Autor cadastrado com sucesso!!!");
-        return true;
+        if(autores.add(novo)){
+        	System.out.println("Autor cadastrado com sucesso!!!");
+        	return true;
+        }
+        System.out.println("Ocorreu algum erro ao tentar cadastrar, por favor, tente novamente.");
+        return false;
     }
 
 
@@ -62,7 +65,6 @@ public class CadastroAutor {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(autores);
     }
 

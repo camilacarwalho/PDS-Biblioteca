@@ -1,6 +1,7 @@
 package com.ifpb.biblioteca.model;
 
 import java.time.LocalDate;
+import com.ifpb.biblioteca.control.*;
 
 public class Emprestimo {
     private int codigo;
@@ -10,6 +11,7 @@ public class Emprestimo {
     private LocalDate dataDevolucao;
     private boolean finalizado;
     private static int numEmprestimo;
+    private CadastroDevolucao cadastrodevolucao;
 
 
     public Emprestimo(Livro livro, Cliente cliente) {
@@ -22,6 +24,21 @@ public class Emprestimo {
     }
 
     public int getCodigo() { return codigo; }
+ 
+    public boolean devolucao(Emprestimo emprestimo){
+    	if(!(finalizado)){
+    		System.out.println("Ocorreu um erro ao realizar a devolução. Por favor, tente novamente.");
+    		return false;
+    	}
+    	if(dataDevolucao.isBefore(LocalDate.now())){
+    		Devolucao devolucao = new Devolucao(emprestimo);
+    		cadastrodevolucao.cadastrar(devolucao);
+    		finalizado = false;
+    		return true;
+    	}
+    	finalizado = false;
+    	return true;
+    }
 
     public LocalDate getDataDevolucao() {
         return dataDevolucao;

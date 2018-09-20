@@ -9,8 +9,16 @@ import java.util.Scanner;
 
 public class ShowText {
 
-    public static boolean login(CadastroFuncionario crudF) {
-        Scanner scan = new Scanner(System.in);
+    private static Scanner scan;
+	private static Scanner scan2;
+	private static Scanner scan3;
+	private static Scanner scan4;
+	private static Scanner scan5;
+	private static Scanner scan6;
+	private static Scanner scan7;
+
+	public static boolean login(CadastroFuncionario crudF) {
+        scan = new Scanner(System.in);
         System.out.println(":.:.:.:.:.LOGIN.:.:.:.:.:\n\n");
         System.out.println("        FUNCIONARIO       \n");
         System.out.println("Informe o seu email:");
@@ -21,13 +29,13 @@ public class ShowText {
     }
 
     public static boolean loginCliente(CadastroCliente crudC) {
-        Scanner scan = new Scanner(System.in);
+        scan2 = new Scanner(System.in);
         System.out.println(":.:.:.:.:.LOGIN.:.:.:.:.:\n\n");
         System.out.println("         CLIENTE         \n");
         System.out.println("Informe o seu email:");
-        String email = scan.next();
+        String email = scan2.next();
         System.out.println("Informe sua senha:");
-        String senha = scan.next();
+        String senha = scan2.next();
         return crudC.autentication(email, senha);
     }
 
@@ -71,20 +79,20 @@ public class ShowText {
     }
 
     public static void readFuncionario(CadastroFuncionario crudF) {
-        Scanner scan = new Scanner(System.in);
+        scan3 = new Scanner(System.in);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         System.out.println(":.:.:.:.:.CADASTRO.:.:.:.:.:\n\n");
         System.out.println("        FUNCIOANRIO         \n");
         System.out.println("Informe seu email:");
-        String email = scan.next();
+        String email = scan3.next();
         System.out.println("Informe sua senha:");
-        String senha = scan.next();
+        String senha = scan3.next();
         System.out.println("Informe seu nome:");
-        String nome = scan.next();
+        String nome = scan3.next();
         System.out.println("Informe seu CPF:");
-        String CPF = scan.next();
+        String CPF = scan3.next();
         System.out.println("Informe sua data de nasicmento:");
-        String data = scan.next();
+        String data = scan3.next();
         LocalDate nascimento = LocalDate.parse(data, formatter);
         Funcionario novo = new Funcionario(email, senha, nome, CPF, nascimento);
         crudF.cadastrar(novo);
@@ -92,32 +100,32 @@ public class ShowText {
     }
 
     public static void readCliente(CadastroCliente crudC) {
-        Scanner scan = new Scanner(System.in);
+        scan4 = new Scanner(System.in);
         System.out.println(":.:.:.:.:.CADASTRO.:.:.:.:.:\n\n");
         System.out.println("          CLIENTE           \n");
         System.out.println("Informe seu email:");
-        String email = scan.next();
+        String email = scan4.next();
         System.out.println("Informe sua senha:");
-        String senha = scan.next();
+        String senha = scan4.next();
         System.out.println("Informe seu nome:");
-        String nome = scan.next();
+        String nome = scan4.next();
         System.out.println("Informe seu CPF:");
-        String CPF = scan.next();
+        String CPF = scan4.next();
         Cliente novo = new Cliente(nome, CPF, email, senha);
         crudC.cadastrar(novo);
     }
 
     public static void readLivro(CadastroLivro crudL) {
-        Scanner scan = new Scanner(System.in);
+        scan5 = new Scanner(System.in);
         System.out.println(":.:.:.:.:.CADASTRO.:.:.:.:.:\n\n");
         System.out.println("           LIVRO            \n");
         System.out.println("Informe o titulo do livro:");
-        String titulo = scan.next();
+        String titulo = scan5.next();
         System.out.println("Informe o códgo do livro:");
-        int codigo = scan.nextInt();
+        int codigo = scan5.nextInt();
         System.out.println("Selecione o genero:");
         System.out.println("1. ROMANCE\n2. TERROR\n3. POESIA\n4. FANTASIA\n5. AVENTURA\n6. BIOGRAFIA\n7. DIDATICO");
-        int choise = scan.nextInt();
+        int choise = scan5.nextInt();
         Genero genero;
         switch (choise) {
             case 1:
@@ -146,38 +154,38 @@ public class ShowText {
         }
         Autor autor = null;
         System.out.println("Informe a descrição do livro:");
-        String descricao = scan.nextLine();
-        scan.nextLine();
+        String descricao = scan5.nextLine();
+        scan5.nextLine();
         Livro novo = new Livro(titulo, codigo, genero, autor, descricao);
         crudL.cadastrar(novo);
     }
 
     public static void readAutor(CadastroAutor crudA) {
-        Scanner scan = new Scanner(System.in);
+        scan6 = new Scanner(System.in);
         System.out.println(":.:.:.:.:.CADASTRO.:.:.:.:.:\n\n");
         System.out.println("           AUTOR            \n");
         System.out.println("Informe o nome do autor:");
-        String nome = scan.nextLine();
-        scan.nextLine();
+        String nome = scan6.nextLine();
+        scan6.nextLine();
         Autor autor = new Autor(nome);
         crudA.cadastrar(autor);
     }
 
     public static void doEmprestimo(CadastroLivro crudL, CadastroCliente crudC, CadastroEmprestimos crudE) {
-        Scanner scan = new Scanner(System.in);
+        scan7 = new Scanner(System.in);
         System.out.println(":.:.:.:.:.EMPRESTIMO.:.:.:.:.:\n\n");
         System.out.println("      SELECIONE UM LIVRO      \n");
         System.out.println(crudL);
-        int choise = scan.nextInt();
+        int choise = scan7.nextInt();
         if (crudL.getEstante()==null){
             System.out.println("Empréstimo não pode ser realizado, não existem livros!!!");
 
         }else {
             Livro escolhido = crudL.consulta(choise - 1);
             System.out.println("Informe o email do cliente:");
-            String email = scan.next();
+            String email = scan7.next();
             System.out.println("Informe a senha do cliente:");
-            String senha = scan.next();
+            String senha = scan7.next();
             Cliente cliente = crudC.consulta(email, senha);
             Emprestimo emprestimo = new Emprestimo(escolhido, cliente);
             System.out.println("A devolução deve ser feita na data: " + emprestimo.getDataDevolucao());

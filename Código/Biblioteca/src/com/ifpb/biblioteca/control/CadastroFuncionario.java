@@ -1,11 +1,8 @@
 package com.ifpb.biblioteca.control;
 
-import com.ifpb.biblioteca.model.Funcionario;
-import com.ifpb.biblioteca.model.Livro;
-
+import com.ifpb.biblioteca.model.Funcionario;	
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class CadastroFuncionario {
 

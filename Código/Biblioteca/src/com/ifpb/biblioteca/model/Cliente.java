@@ -67,7 +67,6 @@ public class Cliente {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(matricula);
     }
 

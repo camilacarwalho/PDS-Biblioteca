@@ -19,9 +19,12 @@ public class CadastroEmprestimos {
     }
 
     public boolean cadastrar(Emprestimo novo) {
-        emprestimos.add(novo);
+        if(emprestimos.add(novo)){
         System.out.println("Emprestimo feito com sucesso!!");
         return true;
+        }
+        System.out.println("Ocorreu um erro durante o cadastro do emprestimo. Por favor, tente novamente.");
+        return false;
     }
 
 

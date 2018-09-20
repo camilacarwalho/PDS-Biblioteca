@@ -3,6 +3,8 @@ package com.ifpb.biblioteca.model;
 import java.util.ArrayList;
 import java.util.List;
 
+//metodos atualizar e editar(eduardo)
+
 public class Estante {
     private List<Livro> livros;
 

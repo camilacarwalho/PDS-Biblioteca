@@ -37,7 +37,6 @@ public class Autor {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(codAutor);
     }
 

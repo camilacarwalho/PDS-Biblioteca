@@ -1,7 +1,5 @@
 package com.ifpb.biblioteca.model;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -9,8 +7,11 @@ import java.util.Objects;
  *
  * O objeto do tipo Livro a ser cadastrado no sistema.
  */
+
 //Rever status
 //Editar toString
+//rever getgenero(eduardo)
+
 public class Livro {
     private String titulo;
     private int codigo;
@@ -18,8 +19,6 @@ public class Livro {
     private Autor autor;
     private String descricao;
     private boolean status;
-
-
 
     public Livro(String titulo, int codigo, Genero genero, Autor autor, String descricao) {
         this.titulo = titulo;
@@ -70,7 +69,7 @@ public class Livro {
         setGenero(Genero.BIOGRAFIA);
         } else if (genero == Genero.DIDATICO.getID()){
         setGenero(Genero.DIDATICO);
-    }
+        }
     }
 
     public Autor getAutor() {
@@ -98,7 +97,7 @@ public class Livro {
     }
 
     public String isDisponivel(){
-        if (status == false ){
+        if (!(status)){
             return "disponível";
         } else return "indisponível";
     }
