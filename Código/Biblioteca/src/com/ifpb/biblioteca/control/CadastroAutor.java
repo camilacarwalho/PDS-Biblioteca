@@ -28,13 +28,13 @@ public class CadastroAutor {
     }
 
 
-    public String consulta(int codAutor) {
+    public Autor consulta(int codAutor) {
         for (Autor autor: autores) {
             if(codAutor == autor.getCodAutor()){
-                return autor.toString();
+                return autor;
             }
         }
-        return "Código de autor inexistente!!!";
+        return null;
     }
 
 

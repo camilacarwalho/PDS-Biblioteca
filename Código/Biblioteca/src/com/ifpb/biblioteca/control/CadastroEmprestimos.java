@@ -28,13 +28,13 @@ public class CadastroEmprestimos {
     }
 
 
-    public String consulta(int codigo) {
+    public Emprestimo consulta(int codigo) {
         for (Emprestimo emprestimo: emprestimos) {
             if(codigo == emprestimo.getCodigo()){
-                return emprestimo.toString();
+                return emprestimo;
             }
         }
-        return "Este emprestimo não existe.";
+        return null;
     }
 
 

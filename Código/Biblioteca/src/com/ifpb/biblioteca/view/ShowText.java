@@ -69,7 +69,7 @@ public class ShowText {
         System.out.println("5. Voltar ao menú principal");
     }
 
-    public static void gerenciaAutores() {
+    public static void gerenciaAutores(CadastroAutor crudAutor) {
         System.out.println(":.:.:.:.:.GERENCIA DE AUTORES.:.:.:.:.:\n\n");
         System.out.println("SELECIONE UMA DAS OPÇÕES ABAIXO:");
         System.out.println("1. Cadastrar autor");
@@ -191,6 +191,13 @@ public class ShowText {
             System.out.println("A devolução deve ser feita na data: " + emprestimo.getDataDevolucao());
             crudE.cadastrar(emprestimo);
         }
+    }
+    
+    public static void doDevolucao(Emprestimo emprestimo) {
+        System.out.println(":.:.:.:.:.DEVOLU��O.:.:.:.:.:\n\n");
+        Devolucao devolucao = new Devolucao(emprestimo);
+        CadastroDevolucao crudDevolucao = new CadastroDevolucao();
+        crudDevolucao.cadastrar(devolucao);
     }
 
 }

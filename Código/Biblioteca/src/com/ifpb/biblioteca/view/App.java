@@ -1,6 +1,11 @@
 package com.ifpb.biblioteca.view;
 
-import com.ifpb.biblioteca.control.*;	
+import com.ifpb.biblioteca.control.*;
+import com.ifpb.biblioteca.model.Autor;
+import com.ifpb.biblioteca.model.Livro;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -9,13 +14,12 @@ public class App {
 
 	public static void main(String[] args) {
         setCrudAutor(new CadastroAutor());
+        CadastroAutor crudAutor = new CadastroAutor();
         CadastroCliente crudCliente = new CadastroCliente();
         CadastroEmprestimos crudEmprestimo = new CadastroEmprestimos();
         CadastroLivro crudLivro = new CadastroLivro();
         CadastroFuncionario crudFuncionario = new CadastroFuncionario();
-        ShowText menu = new ShowText();
-
-
+        CadastroDevolucao crudDevolucao = new CadastroDevolucao();
         boolean continua = true;
         int seleciona;
         int selecionaMenu;
@@ -23,13 +27,13 @@ public class App {
 
 
         while(continua){
-            System.out.println(":.:.:.:.TELA INICIAL.:.:.:.:\n\n");
+            System.out.println(":.:.:.:.TELA INICIAL FUNCIONÁRIO.:.:.:.:\n\n");
             System.out.println("1: Autenticar");
             System.out.println("2: Criar nova conta:");
             seleciona = scan.nextInt();
 
             if(seleciona<0||seleciona>2){
-                System.out.println("ERROR:Press ENTER para continar!");
+                System.out.println("ERROR:Press ENTER para continuar!");
                 scan.nextLine();
             }
             else{
@@ -45,7 +49,6 @@ public class App {
                                     System.out.println("ERROR:Press ENTER para continar!");
                                     scan.nextLine();
                                 }else {
-                                    int selecionaFunc;
                                     switch(selecionaMenu){
                                         case 1:
                                             System.out.println(crudLivro);
@@ -61,9 +64,8 @@ public class App {
                                                  continuaMenu=false;
                                             break;
                                         case 4:
-                                            boolean continuaM = true;
-                                            int index;
-                                            while(continuaMenu){
+                                        	boolean continuaMenuEmprestimo = true;
+                                        	while(continuaMenuEmprestimo){
                                                 ShowText.gerenciaEmprestimo();
                                                 int selecionaM = scan.nextInt();
                                                 if(selecionaM<1||selecionaM>6){
@@ -73,24 +75,29 @@ public class App {
                                                 else{
                                                     switch(selecionaM){
                                                         case 1:
-                                                            System.out.println(crudEmprestimo);
+                                                            if(crudEmprestimo.equals("")){
+                                                            	System.out.println("Nenhum emprestimo salvo!");
+                                                            }
+                                                            else{
+                                                            	System.out.println(crudEmprestimo);
+                                                            };
                                                             break;
                                                         case 2:
+                                                        		int codigo = scan.nextInt();
+                                                        		ShowText.doDevolucao(crudEmprestimo.consulta(codigo));
                                                             break;
                                                         case 3: ShowText.doEmprestimo(crudLivro, crudCliente, crudEmprestimo);
                                                             break;
                                                         case 4:
-                                                         continuaM = false;
-                                                            break;
-
+                                                        	 continuaMenuEmprestimo = false;
+                                                        	 break;
                                                     }
                                                 }
                                             }
 
                                             break;
                                         case 5:  boolean continuaL = true;
-                                            int indexL;
-                                            while(continuaL){
+										while(continuaL){
                                                 ShowText.gerenciaLivros();
                                                 int selecionaM = scan.nextInt();
                                                 if(selecionaM<1||selecionaM>5){
@@ -112,14 +119,54 @@ public class App {
                                                         case 3:
                                                             System.out.println("Selecione qual livro deseja editar:");
                                                             System.out.println(crudLivro);
-                                                            int editar = scan.nextInt();
-
-                                                            //crudLivro.update(editar, );
+                                                            int edit = scan.nextInt();
+                                                            ShowText.readLivro(crudLivro);
+                                                            List<Livro> livros = crudLivro.getEstante().getLivros();
+                                                            int tamanhoarraylivros = livros.size();
+                                                            crudLivro.update(edit, crudLivro.consulta(tamanhoarraylivros-1));
+                                                            livros = null;
                                                             break;
                                                         case 4:
-                                                            continuaM = false;
-                                                            break;
-
+                                                        	boolean continuaMenuAutor = true;
+                                                        	while(continuaMenuAutor){
+                                                        		ShowText.gerenciaAutores(crudAutor);
+                                                        		int opcao = scan.nextInt();
+                                                        		if(opcao < 0 || opcao > 4){
+                                                        			System.out.println("opção invalida!");
+                                                        			opcao = scan.nextInt();
+                                                        		}
+                                                        		else{
+                                                        			switch(opcao){
+                                                        			case 1:
+                                                        				ShowText.readAutor(crudAutor);
+                                                        				break;
+                                                        			case 2:
+                                                        				System.out.println("Selecione qual Autor deseja deletar:");
+                                                                        System.out.println(crudAutor);
+                                                                        int delete = scan.nextInt();
+                                                                        crudAutor.delete(delete-1);
+                                                                        System.out.println("Autor deletado com sucesso!!!");
+                                                                        break;
+                                                        			case 3:
+                                                        				System.out.println("Selecione qual Autor deseja alterar:");
+                                                                        System.out.println(crudAutor);
+                                                                        int update = scan.nextInt();
+                                                                        ShowText.readLivro(crudLivro);
+                                                                        List<Autor> autores = crudAutor.getAutores();
+                                                                        int tamanhoarrayautores = autores.size();
+                                                                        crudAutor.update(update, crudAutor.consulta(tamanhoarrayautores-1));
+                                                                        livros = null;
+                                                                        break;
+                                                        			case 4:
+                                                        				continuaMenuAutor = false;
+                                                        				break;
+                                                            		}
+                                                        		}
+                                                        	}
+                                                        	break;
+                                                        case 5:
+                                                        	continuaL = false;
+                                                        	break;
                                                     }
                                                 }
                                             }
@@ -144,7 +191,7 @@ public class App {
         }
         System.out.println("::.:.:.:.:.:FIM::.:.:.:.:.:");
 
-
+        scan.close();
     }
 
 
