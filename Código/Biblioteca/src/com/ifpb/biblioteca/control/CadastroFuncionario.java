@@ -1,5 +1,6 @@
 package com.ifpb.biblioteca.control;
 
+import com.ifpb.biblioteca.exceptions.DeleteUsuarioException;
 import com.ifpb.biblioteca.model.Funcionario;	
 import java.util.ArrayList;
 import java.util.List;
@@ -54,9 +55,12 @@ public class CadastroFuncionario {
         return true;
     }
 
-    public boolean deleteThis(String email, String senha){
+    public boolean deleteThis(String email, String senha) throws DeleteUsuarioException{
         Funcionario deletar = consulta(email,senha);
-        return delete(funcionarios.indexOf(deletar));
+        if (delete(funcionarios.indexOf(deletar))){
+        	return true;
+        }
+        throw new DeleteUsuarioException("a");
     }
 
     public boolean autentication(String email, String senha) {

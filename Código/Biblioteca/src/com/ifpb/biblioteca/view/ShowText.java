@@ -1,6 +1,8 @@
 package com.ifpb.biblioteca.view;
 
 import com.ifpb.biblioteca.control.*;
+import com.ifpb.biblioteca.exceptions.SemLivroException;
+import com.ifpb.biblioteca.exceptions.UsuarioCadastroException;
 import com.ifpb.biblioteca.model.*;
 
 import java.time.LocalDate;
@@ -56,7 +58,7 @@ public class ShowText {
         System.out.println("1. Visualizar emprestimos");
         System.out.println("2. Realizar devolução");
         System.out.println("3. Realizar emprestimo");
-        System.out.println("4. Voltar ao menú principal");
+        System.out.println("4. Voltar ao menu principal");
     }
 
     public static void gerenciaLivros() {
@@ -99,7 +101,7 @@ public class ShowText {
 
     }
 
-    public static void readCliente(CadastroCliente crudC) {
+    public static void readCliente(CadastroCliente crudC) throws UsuarioCadastroException {
         scan4 = new Scanner(System.in);
         System.out.println(":.:.:.:.:.CADASTRO.:.:.:.:.:\n\n");
         System.out.println("          CLIENTE           \n");
@@ -112,7 +114,11 @@ public class ShowText {
         System.out.println("Informe seu CPF:");
         String CPF = scan4.next();
         Cliente novo = new Cliente(nome, CPF, email, senha);
-        crudC.cadastrar(novo);
+        try{
+        	crudC.cadastrar(novo);
+        } catch(UsuarioCadastroException ex){
+        	throw new UsuarioCadastroException("a");
+        }
     }
 
     public static void readLivro(CadastroLivro crudL) {
@@ -171,16 +177,15 @@ public class ShowText {
         crudA.cadastrar(autor);
     }
 
-    public static void doEmprestimo(CadastroLivro crudL, CadastroCliente crudC, CadastroEmprestimos crudE) {
+    public static void doEmprestimo(CadastroLivro crudL, CadastroCliente crudC, CadastroEmprestimos crudE) throws SemLivroException{
         scan7 = new Scanner(System.in);
         System.out.println(":.:.:.:.:.EMPRESTIMO.:.:.:.:.:\n\n");
         System.out.println("      SELECIONE UM LIVRO      \n");
         System.out.println(crudL);
-        int choise = scan7.nextInt();
         if (crudL.getEstante()==null){
-            System.out.println("Empréstimo não pode ser realizado, não existem livros!!!");
-
+            throw new SemLivroException("a");
         }else {
+        	int choise = scan7.nextInt();
             Livro escolhido = crudL.consulta(choise - 1);
             System.out.println("Informe o email do cliente:");
             String email = scan7.next();
@@ -193,10 +198,9 @@ public class ShowText {
         }
     }
     
-    public static void doDevolucao(Emprestimo emprestimo) {
-        System.out.println(":.:.:.:.:.DEVOLU��O.:.:.:.:.:\n\n");
+    public static void doDevolucao(Emprestimo emprestimo, CadastroDevolucao crudDevolucao) throws NullPointerException {
+        System.out.println(":.:.:.:.:.DEVOLUÇÃO.:.:.:.:.:\n\n");
         Devolucao devolucao = new Devolucao(emprestimo);
-        CadastroDevolucao crudDevolucao = new CadastroDevolucao();
         crudDevolucao.cadastrar(devolucao);
     }
 

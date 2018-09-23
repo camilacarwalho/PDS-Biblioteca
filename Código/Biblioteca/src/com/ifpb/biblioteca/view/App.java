@@ -1,6 +1,9 @@
 package com.ifpb.biblioteca.view;
 
 import com.ifpb.biblioteca.control.*;
+import com.ifpb.biblioteca.exceptions.DeleteUsuarioException;
+import com.ifpb.biblioteca.exceptions.SemLivroException;
+import com.ifpb.biblioteca.exceptions.UsuarioCadastroException;
 import com.ifpb.biblioteca.model.Autor;
 import com.ifpb.biblioteca.model.Livro;
 
@@ -27,7 +30,7 @@ public class App {
 
 
         while(continua){
-            System.out.println(":.:.:.:.TELA INICIAL FUNCION�RIO.:.:.:.:\n\n");
+            System.out.println(":.:.:.:.TELA INICIAL FUNCIONÁRIO.:.:.:.:\n\n");
             System.out.println("1: Autenticar");
             System.out.println("2: Criar nova conta:");
             seleciona = scan.nextInt();
@@ -53,13 +56,23 @@ public class App {
                                         case 1:
                                             System.out.println(crudLivro);
                                             break;
-                                        case 2: ShowText.readCliente(crudCliente);
+                                        case 2: 
+                                        	try {
+                                        		ShowText.readCliente(crudCliente);
+                                        	} catch(UsuarioCadastroException ex){
+                                        		System.out.println("Não foi possivel cadastrar o usuário! Tente novamente.");
+                                        	}
                                             break;
                                         case 3:  System.out.println("Digite novamente o seu email:");
                                                  String email = scan.next();
                                                  System.out.println("Digite a sua senha\n");
                                                  String senha = scan.next();
+                                                 
+                                                 try{
                                                  crudFuncionario.deleteThis(email, senha);
+                                                 } catch (DeleteUsuarioException ex){
+                                                	 System.out.println("Erro ao deletar este usuário! Tente novamente.");
+                                                 }
                                                  System.out.println("Funcionário deletado com sucesso!\n");
                                                  continuaMenu=false;
                                             break;
@@ -83,10 +96,20 @@ public class App {
                                                             };
                                                             break;
                                                         case 2:
-                                                        		int codigo = scan.nextInt();
-                                                        		ShowText.doDevolucao(crudEmprestimo.consulta(codigo));
+                                                        	System.out.println("Informe o código do empréstimo: ");
+                                                        	int codigo = scan.nextInt();
+                                                        	try{
+                                                        		ShowText.doDevolucao(crudEmprestimo.consulta(codigo), crudDevolucao);
+                                                        	} catch(NullPointerException ex){
+                                                        		System.out.println("Empréstimo não encontrado! Por favor, informe um empréstimo válido.");
+                                                        	}
                                                             break;
-                                                        case 3: ShowText.doEmprestimo(crudLivro, crudCliente, crudEmprestimo);
+                                                        case 3: 
+                                                        	try{
+                                                        		ShowText.doEmprestimo(crudLivro, crudCliente, crudEmprestimo);
+                                                        	}catch (SemLivroException ex){
+                                                        		System.out.println("Não há livros cadastrados! Cadastre um livro antes de fazer um empréstimo.");
+                                                        	}
                                                             break;
                                                         case 4:
                                                         	 continuaMenuEmprestimo = false;
@@ -132,7 +155,7 @@ public class App {
                                                         		ShowText.gerenciaAutores(crudAutor);
                                                         		int opcao = scan.nextInt();
                                                         		if(opcao < 0 || opcao > 4){
-                                                        			System.out.println("op��o invalida!");
+                                                        			System.out.println("opção invalida!");
                                                         			opcao = scan.nextInt();
                                                         		}
                                                         		else{
@@ -177,7 +200,7 @@ public class App {
                                 }
 
                             }
-                        }else System.out.println("Funcionário não cadastrado!!!");
+                        }else System.out.println("FuncionÃ¡rio nÃ£o cadastrado!!!");
 
                         break;
                     case 2: ShowText.readFuncionario(crudFuncionario);
@@ -197,7 +220,6 @@ public class App {
 
     public static void limpaTela(){
         for (int i=0; i<10;i++) System.out.println("\n");
-
     }
 
 

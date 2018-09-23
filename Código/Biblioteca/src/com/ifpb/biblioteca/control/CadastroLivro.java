@@ -1,6 +1,8 @@
 package com.ifpb.biblioteca.control;
 
 import java.util.List;
+
+import com.ifpb.biblioteca.exceptions.SemLivroException;
 import com.ifpb.biblioteca.model.*;
 
 
@@ -15,7 +17,7 @@ public class CadastroLivro {
 
     public Estante getEstante() {
         if (estante.isEmpty()){
-            System.out.println("Não há livros cadastrados!!!");
+            return null;
         }
         return estante;
     }
@@ -54,9 +56,9 @@ public class CadastroLivro {
     }
 
     @Override
-    public String toString() {
+    public String toString(){
         if(estante.isEmpty()){
-            return "Não há livros cadastrados!";
+            return "";
         }
         String str = ":.:.:.:.:.:LIVROS:.:.:.:.:.:\n";
         List<Livro> livros = estante.getLivros();

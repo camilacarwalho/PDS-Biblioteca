@@ -1,5 +1,6 @@
 package com.ifpb.biblioteca.control;
 
+import com.ifpb.biblioteca.exceptions.UsuarioCadastroException;
 import com.ifpb.biblioteca.model.Cliente;	
 
 import java.util.ArrayList;
@@ -20,8 +21,11 @@ public class CadastroCliente {
     }
 
 
-    public boolean cadastrar(Cliente novo) {
-        return cadastrados.add(novo);
+    public boolean cadastrar(Cliente novo) throws UsuarioCadastroException {
+    	if(cadastrados.add(novo)){
+    		return true;
+    	}
+    	throw new UsuarioCadastroException("a");
     }
 
     public boolean autentication(String email, String senha) {
