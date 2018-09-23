@@ -5,6 +5,7 @@ import com.ifpb.biblioteca.exceptions.SemLivroException;
 import com.ifpb.biblioteca.exceptions.UsuarioCadastroException;
 import com.ifpb.biblioteca.model.*;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -80,7 +81,7 @@ public class ShowText {
         System.out.println("4. voltar a genrencia de livros");
     }
 
-    public static void readFuncionario(CadastroFuncionario crudF) {
+    public static void readFuncionario(CadastroFuncionario crudF) throws IOException{
         scan3 = new Scanner(System.in);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         System.out.println(":.:.:.:.:.CADASTRO.:.:.:.:.:\n\n");
@@ -97,7 +98,7 @@ public class ShowText {
         String data = scan3.next();
         LocalDate nascimento = LocalDate.parse(data, formatter);
         Funcionario novo = new Funcionario(email, senha, nome, CPF, nascimento);
-        crudF.cadastrar(novo);
+        crudF.adicionar(novo);
 
     }
 

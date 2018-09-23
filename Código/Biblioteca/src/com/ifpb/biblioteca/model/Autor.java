@@ -1,9 +1,10 @@
 package com.ifpb.biblioteca.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 
-public class Autor {
+public class Autor implements Serializable {
     private String nome;
     private int codAutor;
     private static int codigo;

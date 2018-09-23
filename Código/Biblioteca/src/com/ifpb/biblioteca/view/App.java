@@ -5,8 +5,11 @@ import com.ifpb.biblioteca.exceptions.DeleteUsuarioException;
 import com.ifpb.biblioteca.exceptions.SemLivroException;
 import com.ifpb.biblioteca.exceptions.UsuarioCadastroException;
 import com.ifpb.biblioteca.model.Autor;
+import com.ifpb.biblioteca.model.Funcionario;
 import com.ifpb.biblioteca.model.Livro;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,12 +19,18 @@ public class App {
 
 
 	public static void main(String[] args) {
+        CadastroFuncionario crudFuncionario = null;
+	    try{
+            crudFuncionario = new CadastroFuncionario();
+        }catch(Exception e){
+            System.out.println("Error: Fluxo de cadastro de funcionarios!");
+            System.exit(1);
+        }
         setCrudAutor(new CadastroAutor());
         CadastroAutor crudAutor = new CadastroAutor();
         CadastroCliente crudCliente = new CadastroCliente();
         CadastroEmprestimos crudEmprestimo = new CadastroEmprestimos();
         CadastroLivro crudLivro = new CadastroLivro();
-        CadastroFuncionario crudFuncionario = new CadastroFuncionario();
         CadastroDevolucao crudDevolucao = new CadastroDevolucao();
         boolean continua = true;
         int seleciona;
@@ -67,14 +76,19 @@ public class App {
                                                  String email = scan.next();
                                                  System.out.println("Digite a sua senha\n");
                                                  String senha = scan.next();
-                                                 
-                                                 try{
-                                                 crudFuncionario.deleteThis(email, senha);
-                                                 } catch (DeleteUsuarioException ex){
-                                                	 System.out.println("Erro ao deletar este usuário! Tente novamente.");
-                                                 }
-                                                 System.out.println("Funcionário deletado com sucesso!\n");
-                                                 continuaMenu=false;
+                                                 if(crudFuncionario.autentication(email,senha)){
+                                                     try{
+                                                         Funcionario func = crudFuncionario.buscarFuncionario(email);
+                                                         crudFuncionario.deletarEstaConta(func);
+                                                     } catch (DeleteUsuarioException ex){
+                                                         System.out.println("Erro ao deletar este usuário! Tente novamente.");
+                                                     } catch (IOException e){
+                                                         System.out.println("ERROR: atualização do arquivo!");
+                                                     }
+
+                                                     System.out.println("Funcionário deletado com sucesso!\n");
+                                                     continuaMenu=false;
+                                                 }else System.out.println("Email ou senha inválido!");
                                             break;
                                         case 4:
                                         	boolean continuaMenuEmprestimo = true;
@@ -200,11 +214,14 @@ public class App {
                                 }
 
                             }
-                        }else System.out.println("FuncionÃ¡rio nÃ£o cadastrado!!!");
+                        }else System.out.println("Email ou senha inválidos!!!");
 
                         break;
-                    case 2: ShowText.readFuncionario(crudFuncionario);
-
+                    case 2: try{
+                                ShowText.readFuncionario(crudFuncionario);
+                            }catch(IOException e){
+                                System.out.println("ERROR: adicionar funcionario ao arquivo");
+                            }
                         break;
 
                     case 0: continua = false;

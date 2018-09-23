@@ -1,9 +1,10 @@
 package com.ifpb.biblioteca.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 
-public class Cliente {
+public class Cliente implements Serializable {
 
     private String nome;
     private int matricula;
@@ -62,12 +63,13 @@ public class Cliente {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cliente cliente = (Cliente) o;
-        return matricula == cliente.matricula;
+        return Objects.equals(email, cliente.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(matricula);
+
+        return Objects.hash(email);
     }
 
     public boolean autentication(String email, String senha){

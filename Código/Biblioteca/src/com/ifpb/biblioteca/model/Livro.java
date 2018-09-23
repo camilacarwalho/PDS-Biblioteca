@@ -1,5 +1,6 @@
 package com.ifpb.biblioteca.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Objects;
 //Editar toString
 //rever getgenero(eduardo)
 
-public class Livro {
+public class Livro implements Serializable {
     private String titulo;
     private int codigo;
     private Genero genero;

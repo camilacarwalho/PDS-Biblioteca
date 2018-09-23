@@ -1,9 +1,10 @@
 package com.ifpb.biblioteca.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Funcionario {
+public class Funcionario implements Serializable {
 
     private String email;
     private String senha;
@@ -68,17 +69,13 @@ public class Funcionario {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Funcionario that = (Funcionario) o;
-        return Objects.equals(email, that.email) &&
-                Objects.equals(senha, that.senha) &&
-                Objects.equals(nome, that.nome) &&
-                Objects.equals(CPF, that.CPF) &&
-                Objects.equals(data, that.data);
+        return Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(email, senha, nome, CPF, data);
+        return Objects.hash(email);
     }
 
     @Override
