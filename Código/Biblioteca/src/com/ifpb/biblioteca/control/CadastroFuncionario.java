@@ -32,15 +32,6 @@ public class CadastroFuncionario {
         }
     }
 
-//    public Set<Funcionario> getFuncionarios() throws IOException, ClassNotFoundException{
-//        if(funcionarios.length()>0){
-//            try(ObjectInputStream in = new ObjectInputStream(
-//                    new FileInputStream(funcionarios))){
-//                return (Set<Funcionario>) in.readObject();
-//            }
-//        } return new HashSet<>();
-//    }
-
     public Set<Funcionario> getFuncionarios(){
         return funcionarios;
     }
@@ -67,62 +58,7 @@ public class CadastroFuncionario {
             out.writeObject(funcionarios);
         }
     }
-//    private List<Funcionario> funcionarios;
-//
-//    public CadastroFuncionario(){
-//        funcionarios = new ArrayList<>();
-//    }
-//
-//    public List<Funcionario> getFuncionarios() {
-//        return funcionarios;
-//    }
-//
-//    public boolean cadastrar(Funcionario novo) {
-//        funcionarios.add(novo);
-//        System.out.println("Funcionario cadastrado com sucesso!!!");
-//        return true;
-//    }
-//
-//
-//    public Funcionario consulta(String email, String senha) {
-//        for (Funcionario funcionario: funcionarios) {
-//            if(funcionario.autentication(email,senha)){
-//                return funcionario;
-//            }
-//        }
-//        System.out.println("Usuário inexistente!!\n");
-//        return null;
-//    }
-//
-//    public boolean update(int index,Funcionario novo){
-//        if(index>funcionarios.size()-1){
-//            return false;
-//        }
-//        funcionarios.set(index,novo);
-//        return true;
-//    }
-//
-//    public boolean updateThis(String email, String senha, Funcionario novo){
-//        Funcionario antigo = consulta(email,senha);
-//        return update(funcionarios.indexOf(antigo),novo);
-//    }
-//
-//    public boolean delete(int index){
-//        if(index>funcionarios.size()-1){
-//            return false;
-//        }
-//        funcionarios.remove(index);
-//        return true;
-//    }
-//
-//    public boolean deleteThis(String email, String senha) throws DeleteUsuarioException{
-//        Funcionario deletar = consulta(email,senha);
-//        if (delete(funcionarios.indexOf(deletar))){
-//        	return true;
-//        }
-//        throw new DeleteUsuarioException("a");
-//    }
-//
+
     public boolean atualizarConta(Funcionario antigo,Funcionario novo) throws UsuarioCadastroException {
         if(funcionarios.remove(antigo)){
             if(funcionarios.add(novo)){

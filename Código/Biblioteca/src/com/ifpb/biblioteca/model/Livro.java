@@ -17,11 +17,11 @@ public class Livro implements Serializable {
     private String titulo;
     private int codigo;
     private Genero genero;
-    private Autor autor;
+    private String autor;
     private String descricao;
     private boolean status;
 
-    public Livro(String titulo, int codigo, Genero genero, Autor autor, String descricao) {
+    public Livro(String titulo, int codigo, Genero genero, String autor, String descricao) {
         this.titulo = titulo;
         this.codigo = codigo;
         this.genero = genero;
@@ -73,11 +73,11 @@ public class Livro implements Serializable {
         }
     }
 
-    public Autor getAutor() {
+    public String getAutor() {
         return autor;
     }
 
-    public void setAutores(Autor autor) {
+    public void setAutores(String autor) {
         this.autor = autor;
     }
 

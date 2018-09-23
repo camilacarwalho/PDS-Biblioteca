@@ -22,6 +22,14 @@ public class Cliente implements Serializable {
         this.senha = senha;
     }
 
+    public static int getCodigoCliente(){
+        return codigoCliente;
+    }
+
+    public static void setCodigoCliente(int codigo){
+        codigoCliente = codigo;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -74,5 +82,16 @@ public class Cliente implements Serializable {
 
     public boolean autentication(String email, String senha){
         return Objects.equals(this.email, email) && Objects.equals(this.senha, senha);
+    }
+
+    @Override
+    public String toString() {
+        String S="";
+        return S+".-----------------------------------------.\n" +
+                "Matricula:" + matricula + '\n'+
+                "Nome:" + nome  + '\n'+
+                "Email:" + email + '\n'+
+                "CPF:"+ cpf + '\n'+
+                ".-----------------------------------------.\n";
     }
 }

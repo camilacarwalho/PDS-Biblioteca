@@ -1,31 +1,78 @@
 package com.ifpb.biblioteca.control;
 
-import com.ifpb.biblioteca.exceptions.UsuarioCadastroException;
-import com.ifpb.biblioteca.model.Cliente;	
+import com.ifpb.biblioteca.exceptions.ClienteInexistenteEcxeption;
+import com.ifpb.biblioteca.model.Cliente;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class CadastroCliente {
 
+    private File file;
     private List<Cliente> cadastrados;
 
-    public CadastroCliente() {
-        cadastrados = new ArrayList<>();
+    public CadastroCliente() throws IOException, ClassNotFoundException {
+        file = new File("Cadastrados");
+
+        if(!file.exists()){
+            file.createNewFile();
+            cadastrados = new ArrayList<>();
+        }else{
+            if(file.length()>0){
+                try(ObjectInputStream in = new ObjectInputStream(
+                        new FileInputStream(file))){
+                    cadastrados = (List<Cliente>) in.readObject();
+                    int maior = 0;
+                    for (Cliente cliente : cadastrados) {
+                        if(cliente.getMatricula()>maior){
+                            maior = cliente.getMatricula();
+                        }
+                    }
+                    Cliente.setCodigoCliente(maior);
+                }
+            }
+            else cadastrados = new ArrayList<>();
+        }
     }
 
-
-    public List<Cliente> getCadastrados() {
+    public List<Cliente> getClientes(){
         return cadastrados;
     }
 
+    public boolean isEmpty(){
+        return cadastrados.isEmpty();
+    }
 
-    public boolean cadastrar(Cliente novo) throws UsuarioCadastroException {
-    	if(cadastrados.add(novo)){
-    		return true;
-    	}
-    	throw new UsuarioCadastroException("a");
+    public boolean cadastrar(Cliente novo) throws IOException {
+        cadastrados.add(novo);
+        atualizarArquivo();
+        return true;
+    }
+
+    public boolean delete(int index) throws IOException {
+        cadastrados.remove(index);
+        atualizarArquivo();
+        return true;
+    }
+
+    public boolean update(String email, String senha, Cliente novo) throws ClienteInexistenteEcxeption, IOException {
+        Cliente antigo = consulta(email,senha);
+        if(antigo==null){
+            throw new  ClienteInexistenteEcxeption("O cliente solicitado não existe!");
+        }else{
+            cadastrados.set(cadastrados.indexOf(antigo),novo);
+            atualizarArquivo();
+            return true;
+        }
+    }
+
+    public void atualizarArquivo() throws IOException {
+        try(ObjectOutputStream out = new ObjectOutputStream(
+                new FileOutputStream(file))){
+            out.writeObject(cadastrados);
+        }
     }
 
     public boolean autentication(String email, String senha) {
@@ -45,37 +92,7 @@ public class CadastroCliente {
                 return cliente;
             }
         }
-        System.out.println("Cliente não cadastrado!!!");
         return null;
-    }
-
-    public boolean update(int index, Cliente novo){
-        if(index>cadastrados.size()-1){
-            return false;
-        }
-        cadastrados.set(index,novo);
-        return true;
-    }
-
-
-    public boolean updateThis(String email, String senha, Cliente novo){
-        Cliente antigo = consulta(email,senha);
-        return update(cadastrados.indexOf(antigo),novo);
-    }
-
-    public boolean delete(int index){
-        if(index>cadastrados.size()-1){
-            return false;
-        }
-        cadastrados.remove(index);
-        return true;
-    }
-
-
-
-    public boolean deleteThis(String email, String senha){
-        Cliente deletar = consulta(email,senha);
-        return delete(cadastrados.indexOf(deletar));
     }
 
     @Override

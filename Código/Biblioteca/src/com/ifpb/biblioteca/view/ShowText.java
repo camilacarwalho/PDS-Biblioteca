@@ -2,6 +2,7 @@ package com.ifpb.biblioteca.view;
 
 import com.ifpb.biblioteca.control.*;
 import com.ifpb.biblioteca.exceptions.LivroExistenteException;
+import com.ifpb.biblioteca.exceptions.LivroNaoLidoException;
 import com.ifpb.biblioteca.exceptions.SemLivroException;
 import com.ifpb.biblioteca.exceptions.UsuarioCadastroException;
 import com.ifpb.biblioteca.model.*;
@@ -48,11 +49,20 @@ public class ShowText {
         System.out.println(":.:.:.:.:.MENU PRINCIPAL.:.:.:.:.:\n\n");
         System.out.println("SELECIONE UMA DAS OPÇÕES ABAIXO:");
         System.out.println("1. Visualizar lista de livros");
-        System.out.println("2. Cadastrar cliente");
-        System.out.println("3. Deletar esta conta");
+        System.out.println("2. Deletar esta conta");
+        System.out.println("3. Ir para a gerencia de clientes");
         System.out.println("4. Ir para a gerencia de emprestimos");
         System.out.println("5. Ir para o gerencia de livros");
         System.out.println("6. Sair desta conta");
+    }
+
+    public static void gerenciaCliente(){
+        System.out.println(":.:.:.:.:.GERÊNCIA DE CLIENTES.:.:.:.:.:\n\n");
+        System.out.println("1. Cadastrar um cliente");
+        System.out.println("2. Atualizar os dados de um cliente");
+        System.out.println("3. Deletar um cliente");
+        System.out.println("4. Mostrar todo os clientes cadastrados");
+        System.out.println("5. Voltar ao menu principal");
     }
 
     public static void gerenciaEmprestimo() {
@@ -70,17 +80,7 @@ public class ShowText {
         System.out.println("1. Cadastrar livro");
         System.out.println("2. Deletar livro");
         System.out.println("3. Editar livro");
-        System.out.println("4. Ir para a gerencia de autores");
-        System.out.println("5. Voltar ao menú principal");
-    }
-
-    public static void gerenciaAutores(CadastroAutor crudAutor) {
-        System.out.println(":.:.:.:.:.GERENCIA DE AUTORES.:.:.:.:.:\n\n");
-        System.out.println("SELECIONE UMA DAS OPÇÕES ABAIXO:");
-        System.out.println("1. Cadastrar autor");
-        System.out.println("2. Deletar autor");
-        System.out.println("3. Editar autor");
-        System.out.println("4. voltar a genrencia de livros");
+        System.out.println("4. Voltar ao menú principal");
     }
 
     public static void readFuncionario(CadastroFuncionario crudF) throws IOException{
@@ -104,7 +104,7 @@ public class ShowText {
 
     }
 
-    public static void readCliente(CadastroCliente crudC) throws UsuarioCadastroException {
+    public static Cliente readCliente(CadastroCliente crudC,boolean cadastrar) throws UsuarioCadastroException, IOException {
         scan4 = new Scanner(System.in);
         System.out.println(":.:.:.:.:.CADASTRO.:.:.:.:.:\n\n");
         System.out.println("          CLIENTE           \n");
@@ -117,11 +117,10 @@ public class ShowText {
         System.out.println("Informe seu CPF:");
         String CPF = scan4.next();
         Cliente novo = new Cliente(nome, CPF, email, senha);
-        try{
-        	crudC.cadastrar(novo);
-        } catch(UsuarioCadastroException ex){
-        	throw new UsuarioCadastroException("a");
-        }
+        if(cadastrar){
+            crudC.cadastrar(novo);
+            return null;
+        }else return novo;
     }
 
     public static Livro readLivro(CadastroLivro crudL,boolean adicionar) throws LivroExistenteException, IOException {
@@ -161,29 +160,20 @@ public class ShowText {
             default:
                 genero = Genero.ROMANCE;
         }
-        Autor autor = null;
+        System.out.println("Informe o nome do autor:");
+        scan5.nextLine();
+        String autor = scan5.nextLine();
         System.out.println("Informe a descrição do livro:");
         String descricao = scan5.nextLine();
-        scan5.nextLine();
         Livro novo = new Livro(titulo, codigo, genero, autor, descricao);
         if(adicionar){
-            crudL.cadastrar(novo);
+            try{
+                crudL.cadastrar(novo);
+            }catch(LivroNaoLidoException ex){
+                System.out.println(ex.getMessage());
+            }
             return null;
         }else return novo;
-    }
-
-    public static Autor readAutor(CadastroAutor crudA,boolean adicionar) {
-        scan6 = new Scanner(System.in);
-        System.out.println(":.:.:.:.:.CADASTRO.:.:.:.:.:\n\n");
-        System.out.println("           AUTOR            \n");
-        System.out.println("Informe o nome do autor:");
-        String nome = scan6.nextLine();
-        scan6.nextLine();
-        Autor autor = new Autor(nome);
-        if(adicionar){
-            crudA.cadastrar(autor);
-            return null;
-        }else return autor;
     }
 
     public static void doEmprestimo(CadastroLivro crudL, CadastroCliente crudC, CadastroEmprestimos crudE) throws SemLivroException{

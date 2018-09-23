@@ -35,11 +35,14 @@ public class CadastroLivro {
         return estante;
     }
 
-    public boolean cadastrar(Livro novo) throws LivroExistenteException, IOException {
+    public boolean cadastrar(Livro novo) throws LivroExistenteException, IOException, LivroNaoLidoException {
         for (Livro livro: estante){
             if(novo.equals(livro)){
                 throw new LivroExistenteException("Já existe um livro com este código!");
             }
+        }
+        if(novo == null){
+            throw new LivroNaoLidoException("O livro não foi lido corretamente!");
         }
         estante.add(novo);
         atualizarArquivo();
@@ -88,47 +91,6 @@ public class CadastroLivro {
         }
         return estante.get(index);
     }
-
-//    private Estante estante;
-//
-//    public CadastroLivro() {
-//        estante = new Estante();
-//    }
-//
-//
-//    public Estante getEstante() {
-//        if (estante.isEmpty()){
-//            return null;
-//        }
-//        return estante;
-//    }
-//
-//    public boolean cadastrar(Livro novo) {
-//        estante.addLivro(novo);
-//        System.out.println("Livro cadastrado com sucesso!!!");
-//        return true;
-//    }
-//
-//
-//
-//
-//    public boolean update(int index,Livro novo){
-//        if(index>estante.size()-1){
-//            return false;
-//        }
-//        estante.atualizar(index,novo);
-//        return true;
-//    }
-//
-//
-//
-//    public boolean delete(int index){
-//        if(index>estante.size()-1){
-//            return false;
-//        }
-//        estante.removeLivro(index);
-//        return true;
-//    }
 
     @Override
     public String toString(){
