@@ -1,6 +1,7 @@
 package com.ifpb.biblioteca.view;
 
 import com.ifpb.biblioteca.control.*;
+import com.ifpb.biblioteca.exceptions.LivroExistenteException;
 import com.ifpb.biblioteca.exceptions.SemLivroException;
 import com.ifpb.biblioteca.exceptions.UsuarioCadastroException;
 import com.ifpb.biblioteca.model.*;
@@ -8,6 +9,7 @@ import com.ifpb.biblioteca.model.*;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ShowText {
@@ -122,12 +124,12 @@ public class ShowText {
         }
     }
 
-    public static void readLivro(CadastroLivro crudL) {
+    public static Livro readLivro(CadastroLivro crudL,boolean adicionar) throws LivroExistenteException, IOException {
         scan5 = new Scanner(System.in);
         System.out.println(":.:.:.:.:.CADASTRO.:.:.:.:.:\n\n");
         System.out.println("           LIVRO            \n");
         System.out.println("Informe o titulo do livro:");
-        String titulo = scan5.next();
+        String titulo = scan5.nextLine();
         System.out.println("Informe o códgo do livro:");
         int codigo = scan5.nextInt();
         System.out.println("Selecione o genero:");
@@ -164,10 +166,13 @@ public class ShowText {
         String descricao = scan5.nextLine();
         scan5.nextLine();
         Livro novo = new Livro(titulo, codigo, genero, autor, descricao);
-        crudL.cadastrar(novo);
+        if(adicionar){
+            crudL.cadastrar(novo);
+            return null;
+        }else return novo;
     }
 
-    public static void readAutor(CadastroAutor crudA) {
+    public static Autor readAutor(CadastroAutor crudA,boolean adicionar) {
         scan6 = new Scanner(System.in);
         System.out.println(":.:.:.:.:.CADASTRO.:.:.:.:.:\n\n");
         System.out.println("           AUTOR            \n");
@@ -175,7 +180,10 @@ public class ShowText {
         String nome = scan6.nextLine();
         scan6.nextLine();
         Autor autor = new Autor(nome);
-        crudA.cadastrar(autor);
+        if(adicionar){
+            crudA.cadastrar(autor);
+            return null;
+        }else return autor;
     }
 
     public static void doEmprestimo(CadastroLivro crudL, CadastroCliente crudC, CadastroEmprestimos crudE) throws SemLivroException{
@@ -183,19 +191,28 @@ public class ShowText {
         System.out.println(":.:.:.:.:.EMPRESTIMO.:.:.:.:.:\n\n");
         System.out.println("      SELECIONE UM LIVRO      \n");
         System.out.println(crudL);
-        if (crudL.getEstante()==null){
-            throw new SemLivroException("a");
+        if (crudL.isEmpty()){
+            System.out.println("Não existem livros cadastrados");
         }else {
-        	int choise = scan7.nextInt();
-            Livro escolhido = crudL.consulta(choise - 1);
-            System.out.println("Informe o email do cliente:");
-            String email = scan7.next();
-            System.out.println("Informe a senha do cliente:");
-            String senha = scan7.next();
-            Cliente cliente = crudC.consulta(email, senha);
-            Emprestimo emprestimo = new Emprestimo(escolhido, cliente);
-            System.out.println("A devolução deve ser feita na data: " + emprestimo.getDataDevolucao());
-            crudE.cadastrar(emprestimo);
+        	int choise = -1;
+        	try{
+        	    choise = scan7.nextInt();
+        	    if(choise>0){
+                    Livro escolhido = crudL.consulta(choise - 1);
+                    System.out.println("Informe o email do cliente:");
+                    String email = scan7.next();
+                    System.out.println("Informe a senha do cliente:");
+                    String senha = scan7.next();
+                    Cliente cliente = crudC.consulta(email, senha);
+                    Emprestimo emprestimo = new Emprestimo(escolhido, cliente);
+                    System.out.println("A devolução deve ser feita na data: " + emprestimo.getDataDevolucao());
+                    crudE.cadastrar(emprestimo);
+                }else {
+                    System.out.println("Valor inválido para indice");
+                }
+            }catch(InputMismatchException ex){
+                System.out.println("Valor inválido para indice");
+            }
         }
     }
     

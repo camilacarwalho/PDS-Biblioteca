@@ -129,8 +129,8 @@ public class Livro implements Serializable {
                 "Titulo:" + titulo + '\n'+
                 "Codigo:" + codigo  + '\n'+
                 "Genero:" + genero + '\n'+
-                ""+ autor + '\n'+
-                "Descrição:'" + descricao + '\'' + '\n'+
+                "Autor:"+ autor + '\n'+
+                "Descrição:" + descricao + '\n'+
                 "Status:" + isDisponivel()+ '\n'+
                 ".-----------------------------------------.\n";
     }

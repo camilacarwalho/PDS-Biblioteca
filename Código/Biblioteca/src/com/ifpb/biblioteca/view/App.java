@@ -1,16 +1,16 @@
 package com.ifpb.biblioteca.view;
 
 import com.ifpb.biblioteca.control.*;
-import com.ifpb.biblioteca.exceptions.DeleteUsuarioException;
-import com.ifpb.biblioteca.exceptions.SemLivroException;
-import com.ifpb.biblioteca.exceptions.UsuarioCadastroException;
+import com.ifpb.biblioteca.exceptions.*;
 import com.ifpb.biblioteca.model.Autor;
 import com.ifpb.biblioteca.model.Funcionario;
 import com.ifpb.biblioteca.model.Livro;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,21 +20,27 @@ public class App {
 
 	public static void main(String[] args) {
         CadastroFuncionario crudFuncionario = null;
+        CadastroLivro crudLivro = null;
 	    try{
             crudFuncionario = new CadastroFuncionario();
         }catch(Exception e){
             System.out.println("Error: Fluxo de cadastro de funcionarios!");
             System.exit(1);
         }
+        try{
+            crudLivro = new CadastroLivro();
+        }catch(Exception e){
+            System.out.println("Erro: Fluxo de cadastro de Livros!");
+            System.exit(1);
+        }
         setCrudAutor(new CadastroAutor());
         CadastroAutor crudAutor = new CadastroAutor();
         CadastroCliente crudCliente = new CadastroCliente();
         CadastroEmprestimos crudEmprestimo = new CadastroEmprestimos();
-        CadastroLivro crudLivro = new CadastroLivro();
         CadastroDevolucao crudDevolucao = new CadastroDevolucao();
         boolean continua = true;
-        int seleciona;
-        int selecionaMenu;
+        int seleciona=0;
+        int selecionaMenu=0;
         Scanner scan = new Scanner(System.in);
 
 
@@ -42,10 +48,13 @@ public class App {
             System.out.println(":.:.:.:.TELA INICIAL FUNCIONÁRIO.:.:.:.:\n\n");
             System.out.println("1: Autenticar");
             System.out.println("2: Criar nova conta:");
-            seleciona = scan.nextInt();
+            try{
+                seleciona = scan.nextInt();
+            }catch(InputMismatchException ex){
 
-            if(seleciona<0||seleciona>2){
-                System.out.println("ERROR:Press ENTER para continuar!");
+            }
+            if(seleciona<1||seleciona>2){
+                System.out.println("ERROR:Por favor tente novamnete!");
                 scan.nextLine();
             }
             else{
@@ -56,9 +65,13 @@ public class App {
                             boolean continuaMenu = true;
                             while(continuaMenu) {
                                 ShowText.menuFuncionario();
-                                selecionaMenu = scan.nextInt();
+                                try{
+                                    selecionaMenu = scan.nextInt();
+                                }catch(InputMismatchException ex){
+
+                                }
                                 if(selecionaMenu<1||selecionaMenu>6){
-                                    System.out.println("ERROR:Press ENTER para continar!");
+                                    System.out.println("ERROR:Por favor tente novamnete!");
                                     scan.nextLine();
                                 }else {
                                     switch(selecionaMenu){
@@ -76,7 +89,10 @@ public class App {
                                                  String email = scan.next();
                                                  System.out.println("Digite a sua senha\n");
                                                  String senha = scan.next();
-                                                 if(crudFuncionario.autentication(email,senha)){
+                                                 if(email.equals("0")&&senha.equals("0")){
+                                                     System.out.println("É impossivel deletar o usuário master!");
+                                                 }
+                                                 else if(crudFuncionario.autentication(email,senha)){
                                                      try{
                                                          Funcionario func = crudFuncionario.buscarFuncionario(email);
                                                          crudFuncionario.deletarEstaConta(func);
@@ -85,7 +101,6 @@ public class App {
                                                      } catch (IOException e){
                                                          System.out.println("ERROR: atualização do arquivo!");
                                                      }
-
                                                      System.out.println("Funcionário deletado com sucesso!\n");
                                                      continuaMenu=false;
                                                  }else System.out.println("Email ou senha inválido!");
@@ -94,9 +109,14 @@ public class App {
                                         	boolean continuaMenuEmprestimo = true;
                                         	while(continuaMenuEmprestimo){
                                                 ShowText.gerenciaEmprestimo();
-                                                int selecionaM = scan.nextInt();
+                                                int selecionaM = 0;
+                                                try{
+                                                    selecionaM = scan.nextInt();
+                                                }catch(InputMismatchException ex){
+
+                                                }
                                                 if(selecionaM<1||selecionaM>6){
-                                                    System.out.println("ERROR:Press ENTER para continar!");
+                                                    System.out.println("ERROR:Por favor tente novamente!");
                                                     scan.nextLine();
                                                 }
                                                 else{
@@ -111,9 +131,16 @@ public class App {
                                                             break;
                                                         case 2:
                                                         	System.out.println("Informe o código do empréstimo: ");
-                                                        	int codigo = scan.nextInt();
+                                                        	int codigo = -1;
                                                         	try{
-                                                        		ShowText.doDevolucao(crudEmprestimo.consulta(codigo), crudDevolucao);
+                                                        	    codigo = scan.nextInt();
+                                                            }catch(InputMismatchException ex){
+                                                                System.out.println("ERROR: Valor inválido para código");
+                                                            }
+                                                        	try{
+                                                        	    if(codigo>0)
+                                                        		    ShowText.doDevolucao(crudEmprestimo.consulta(codigo), crudDevolucao);
+                                                        	    else System.out.println("Código para emprestimo inválido!");
                                                         	} catch(NullPointerException ex){
                                                         		System.out.println("Empréstimo não encontrado! Por favor, informe um empréstimo válido.");
                                                         	}
@@ -144,24 +171,53 @@ public class App {
                                                 else{
                                                     switch(selecionaM){
                                                         case 1:
-                                                            ShowText.readLivro(crudLivro);
+                                                            try{
+                                                                ShowText.readLivro(crudLivro,true);
+                                                            }catch(LivroExistenteException ex){
+                                                                System.out.println("Já existe um livro com este código. Por favor insira outro código!");
+                                                            }catch(IOException ex){
+                                                                System.out.println("Erro na atualização do arquivo!");
+                                                            }
                                                             break;
                                                         case 2:
                                                             System.out.println("Selecione qual livro deseja deletar:");
                                                             System.out.println(crudLivro);
-                                                            int deletar = scan.nextInt();
-                                                            crudLivro.delete(deletar-1);
-                                                            System.out.println("Livro deletado com sucesso!!!");
+                                                            int deletar = -1;
+                                                            try{
+                                                                deletar = scan.nextInt();
+                                                            }catch(InputMismatchException ex){
+                                                                System.out.println("ERROR: Valor inválido para indice!");
+                                                            }
+                                                            try{
+                                                                if(deletar>0){
+                                                                    crudLivro.delete(deletar-1);
+                                                                    System.out.println("Livro deletado com sucesso!!!");
+                                                                }
+                                                                else System.out.println("Valor inválido para indice");
+                                                            }catch(IOException ex){
+                                                                System.out.println("Erro ao tentar modificar o arquivo!");
+                                                            }
+
                                                             break;
                                                         case 3:
                                                             System.out.println("Selecione qual livro deseja editar:");
                                                             System.out.println(crudLivro);
                                                             int edit = scan.nextInt();
-                                                            ShowText.readLivro(crudLivro);
-                                                            List<Livro> livros = crudLivro.getEstante().getLivros();
-                                                            int tamanhoarraylivros = livros.size();
-                                                            crudLivro.update(edit, crudLivro.consulta(tamanhoarraylivros-1));
-                                                            livros = null;
+                                                            Livro novo = null;
+                                                            try{
+                                                                novo = ShowText.readLivro(crudLivro,false);
+                                                            }catch(LivroExistenteException ex){
+                                                                System.out.println("Já existe um livro com esta matricula, por favor tente novamente!");
+                                                            }catch(IOException ex){
+                                                                System.out.println("Erro na atualização do arquivo!");
+                                                            }
+                                                            try{
+                                                                crudLivro.update(edit-1,novo);
+                                                            }catch(IOException ex){
+                                                                System.out.println("Erro na atualização do arquivo!");
+                                                            }catch(LivroNaoLidoException ex){
+                                                                System.out.println("Ocorreu um erro na leitura do livro, por favor tente novamente!");
+                                                            }
                                                             break;
                                                         case 4:
                                                         	boolean continuaMenuAutor = true;
@@ -175,7 +231,7 @@ public class App {
                                                         		else{
                                                         			switch(opcao){
                                                         			case 1:
-                                                        				ShowText.readAutor(crudAutor);
+                                                        				ShowText.readAutor(crudAutor,true);
                                                         				break;
                                                         			case 2:
                                                         				System.out.println("Selecione qual Autor deseja deletar:");
@@ -187,12 +243,15 @@ public class App {
                                                         			case 3:
                                                         				System.out.println("Selecione qual Autor deseja alterar:");
                                                                         System.out.println(crudAutor);
-                                                                        int update = scan.nextInt();
-                                                                        ShowText.readLivro(crudLivro);
-                                                                        List<Autor> autores = crudAutor.getAutores();
-                                                                        int tamanhoarrayautores = autores.size();
-                                                                        crudAutor.update(update, crudAutor.consulta(tamanhoarrayautores-1));
-                                                                        livros = null;
+                                                                        int update = -1;
+                                                                        try{
+                                                                            update = scan.nextInt();
+                                                                        }catch(InputMismatchException ex){
+                                                                            System.out.println("Valor inválido para incide!");
+                                                                        }
+                                                                        Autor autorNovo = null;
+                                                                        autorNovo = ShowText.readAutor(crudAutor,false);
+                                                                        crudAutor.update(update-1, autorNovo);
                                                                         break;
                                                         			case 4:
                                                         				continuaMenuAutor = false;
