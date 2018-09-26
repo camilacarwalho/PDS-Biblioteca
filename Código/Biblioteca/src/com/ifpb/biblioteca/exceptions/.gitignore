@@ -1,0 +1,8 @@
+/ClienteInexistenteEcxeption.class
+/DeleteUsuarioException.class
+/LivroExistenteException.class
+/LivroNaoLidoException.class
+/SemLivroException.class
+/UsuarioCadastroException.class
+/LivroInexistenteException.class
+/EmprestimoInexistenteException.class

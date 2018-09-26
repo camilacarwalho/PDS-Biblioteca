@@ -194,7 +194,7 @@ public class App {
                                                 else{
                                                     switch(selecionaM){
                                                         case 1:
-                                                            if(crudEmprestimo.equals("")){
+                                                            if(crudEmprestimo.toString().equals("")){
                                                             	System.out.println("Nenhum emprestimo salvo!");
                                                             }
                                                             else{
@@ -209,19 +209,19 @@ public class App {
                                                             }catch(InputMismatchException ex){
                                                                 System.err.println("ERROR: Valor inválido para código");
                                                             }
-                                                        	try{
-                                                        	    if(codigo>0)
-                                                        		    ShowText.doDevolucao(crudEmprestimo.consulta(codigo), crudDevolucao);
-                                                        	    else System.out.println("Código para emprestimo inválido!");
-                                                        	} catch(NullPointerException ex){
-                                                        		System.out.println("Empréstimo não encontrado! Por favor, informe um empréstimo válido.");
-                                                        	}
+                                                        	    try{
+                                                        	    	ShowText.doDevolucao(crudEmprestimo.consulta(codigo), crudDevolucao, crudEmprestimo, codigo);
+                                                        	    }catch(EmprestimoInexistenteException ex){
+                                                        	    	System.out.println("Código para emprestimo inválido! Por favor, informe um código válido.");
+                                                        	    }
                                                             break;
                                                         case 3: 
                                                         	try{
                                                         		ShowText.doEmprestimo(crudLivro, crudCliente, crudEmprestimo);
                                                         	}catch (SemLivroException ex){
                                                         		System.out.println("Não há livros cadastrados! Cadastre um livro antes de fazer um empréstimo.");
+                                                        	}catch (LivroInexistenteException ex){
+                                                        		System.out.println("Livro nao existente. Por favor, informe um livro existente.");
                                                         	}
                                                             break;
                                                         case 4:

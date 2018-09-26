@@ -2,6 +2,7 @@ package com.ifpb.biblioteca.control;
 
 import java.util.ArrayList;	
 import com.ifpb.biblioteca.model.Devolucao;
+import com.ifpb.biblioteca.model.Livro;
 
 public class CadastroDevolucao {
 	
@@ -19,17 +20,22 @@ public class CadastroDevolucao {
 		this.devolucoes = devolucoes;
 	}
 	
-	public boolean cadastrar(Devolucao devolucao){
+	public float cadastrar(Devolucao devolucao) throws NullPointerException{
 		if(devolucao == null){
-			System.out.println("Ocorreu um erro ao tentar inserir a devolução no array. Por favor, tente novamente.");
-			return false;
+			throw new NullPointerException("a");
 		}
-		return devolucoes.add(devolucao);
+		else{
+			devolucoes.add(devolucao);
+			Livro livro = devolucao.getEmprestimo().getLivro();
+			livro.setStatus(false);
+			
+			return devolucao.getMulta();
+		}
 	}
 	
 	public boolean remover(Devolucao devolucao){
 		if(devolucao == null){
-			System.out.println("Ocorreu um erro ao tentar remover a devolução no array. Por favor, tente novamente.");
+			System.out.println("Ocorreu um erro ao tentar remover a devoluï¿½ï¿½o no array. Por favor, tente novamente.");
 			return false;
 		}
 		return devolucoes.remove(devolucao);
@@ -37,7 +43,7 @@ public class CadastroDevolucao {
 	
 	public Devolucao consulta(int index){
 		if(index < devolucoes.size()){
-			System.out.println("Ocorreu um erro ao tentar consultar a devolução no array. Por favor, tente novamente.");
+			System.out.println("Ocorreu um erro ao tentar consultar a devoluï¿½ï¿½o no array. Por favor, tente novamente.");
 			return null;
 		}
 		return devolucoes.get(index);
@@ -45,7 +51,7 @@ public class CadastroDevolucao {
 	
 	public boolean atualizar(Devolucao devolucao, int index){
 		if(index < devolucoes.size()){
-			System.out.println("Ocorreu um erro ao tentar atualizar a devolução no array. Por favor, tente novamente.");
+			System.out.println("Ocorreu um erro ao tentar atualizar a devoluï¿½ï¿½o no array. Por favor, tente novamente.");
 			return false;
 		}
 		devolucoes.set(index, devolucao);

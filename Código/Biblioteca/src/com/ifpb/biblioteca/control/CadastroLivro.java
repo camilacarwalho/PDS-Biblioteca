@@ -95,7 +95,7 @@ public class CadastroLivro {
     @Override
     public String toString(){
         if(estante.isEmpty()){
-            return "Não Existem livros cadastrados!";
+            return "";
         }
         String str = ":.:.:.:.:.:LIVROS:.:.:.:.:.:\n";
         int cont = 0;

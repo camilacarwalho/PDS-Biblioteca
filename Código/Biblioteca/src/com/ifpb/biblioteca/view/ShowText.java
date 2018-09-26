@@ -1,7 +1,9 @@
 package com.ifpb.biblioteca.view;
 
 import com.ifpb.biblioteca.control.*;
+import com.ifpb.biblioteca.exceptions.EmprestimoInexistenteException;
 import com.ifpb.biblioteca.exceptions.LivroExistenteException;
+import com.ifpb.biblioteca.exceptions.LivroInexistenteException;
 import com.ifpb.biblioteca.exceptions.LivroNaoLidoException;
 import com.ifpb.biblioteca.exceptions.SemLivroException;
 import com.ifpb.biblioteca.exceptions.UsuarioCadastroException;
@@ -176,19 +178,22 @@ public class ShowText {
         }else return novo;
     }
 
-    public static void doEmprestimo(CadastroLivro crudL, CadastroCliente crudC, CadastroEmprestimos crudE) throws SemLivroException{
+    public static void doEmprestimo(CadastroLivro crudL, CadastroCliente crudC, CadastroEmprestimos crudE) throws SemLivroException, LivroInexistenteException{
         scan7 = new Scanner(System.in);
         System.out.println(":.:.:.:.:.EMPRESTIMO.:.:.:.:.:\n\n");
         System.out.println("      SELECIONE UM LIVRO      \n");
         System.out.println(crudL);
         if (crudL.isEmpty()){
-            System.out.println("Não existem livros cadastrados");
+            throw new SemLivroException("a");
         }else {
         	int choise = -1;
         	try{
         	    choise = scan7.nextInt();
         	    if(choise>0){
                     Livro escolhido = crudL.consulta(choise - 1);
+                    if (escolhido == null){
+                    	throw new LivroInexistenteException("a");
+                    }
                     System.out.println("Informe o email do cliente:");
                     String email = scan7.next();
                     System.out.println("Informe a senha do cliente:");
@@ -206,10 +211,29 @@ public class ShowText {
         }
     }
     
-    public static void doDevolucao(Emprestimo emprestimo, CadastroDevolucao crudDevolucao) throws NullPointerException {
+    public static void doDevolucao(Emprestimo emprestimo, CadastroDevolucao crudDevolucao, CadastroEmprestimos crudEmprestimo, int codigo) throws EmprestimoInexistenteException{
         System.out.println(":.:.:.:.:.DEVOLUÇÃO.:.:.:.:.:\n\n");
-        Devolucao devolucao = new Devolucao(emprestimo);
-        crudDevolucao.cadastrar(devolucao);
+        if(emprestimo == null){
+        	throw new EmprestimoInexistenteException("a");
+        }
+        if(emprestimo.getDataDevolucao().isBefore(LocalDate.now())){
+        	Devolucao devolucao = new Devolucao(emprestimo);
+        	float multa = 0;
+        	try{
+        		multa = crudDevolucao.cadastrar(devolucao);
+        		crudEmprestimo.delete(codigo-1);
+        		System.out.println("Devolvido com sucesso! A multa é de " + multa);
+        	}catch(NullPointerException ex){
+        		System.out.println("Erro ao tentar cadastrar a devolução. Por favor, tente novamente.");
+        	}
+        }
+        else{
+        	crudEmprestimo.delete(codigo-1);
+        	Livro livro = emprestimo.getLivro();
+        	livro.setStatus(false);
+        	System.out.println("devolvido com sucesso!");
+        }
+        
     }
 
 }
