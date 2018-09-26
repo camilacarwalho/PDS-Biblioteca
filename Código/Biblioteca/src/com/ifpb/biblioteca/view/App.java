@@ -114,7 +114,7 @@ public class App {
                                                                         Cliente novo  = ShowText.readCliente(crudCliente,false);
                                                                         try{
                                                                             crudCliente.update(email,senha,novo);
-                                                                        }catch(ClienteInexistenteEcxeption ex){
+                                                                        }catch(ClienteInexistenteException ex){
                                                                             System.err.println("Os dados não foram lidos corretamente!");
                                                                         }
                                                                     }catch(UsuarioCadastroException ex){

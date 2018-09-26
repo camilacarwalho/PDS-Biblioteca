@@ -1,6 +1,6 @@
 package com.ifpb.biblioteca.control;
 
-import com.ifpb.biblioteca.exceptions.ClienteInexistenteEcxeption;
+import com.ifpb.biblioteca.exceptions.ClienteInexistenteException;
 import com.ifpb.biblioteca.model.Cliente;
 
 import java.io.*;
@@ -57,10 +57,10 @@ public class CadastroCliente {
         return true;
     }
 
-    public boolean update(String email, String senha, Cliente novo) throws ClienteInexistenteEcxeption, IOException {
+    public boolean update(String email, String senha, Cliente novo) throws ClienteInexistenteException, IOException {
         Cliente antigo = consulta(email,senha);
         if(antigo==null){
-            throw new  ClienteInexistenteEcxeption("O cliente solicitado não existe!");
+            throw new  ClienteInexistenteException("O cliente solicitado não existe!");
         }else{
             cadastrados.set(cadastrados.indexOf(antigo),novo);
             atualizarArquivo();
@@ -85,14 +85,13 @@ public class CadastroCliente {
     }
 
 
-    public Cliente consulta(String email, String senha) {
+    public Cliente consulta(String email, String senha) throws ClienteInexistenteException {
         for (Cliente cliente: cadastrados) {
             if(cliente.autentication(email,senha)){
-                System.out.println(cliente);
                 return cliente;
             }
         }
-        return null;
+        throw new ClienteInexistenteException("a");
     }
 
     @Override

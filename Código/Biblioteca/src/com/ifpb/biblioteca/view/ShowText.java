@@ -1,6 +1,7 @@
 package com.ifpb.biblioteca.view;
 
 import com.ifpb.biblioteca.control.*;
+import com.ifpb.biblioteca.exceptions.ClienteInexistenteException;
 import com.ifpb.biblioteca.exceptions.EmprestimoInexistenteException;
 import com.ifpb.biblioteca.exceptions.LivroExistenteException;
 import com.ifpb.biblioteca.exceptions.LivroInexistenteException;
@@ -198,10 +199,19 @@ public class ShowText {
                     String email = scan7.next();
                     System.out.println("Informe a senha do cliente:");
                     String senha = scan7.next();
-                    Cliente cliente = crudC.consulta(email, senha);
-                    Emprestimo emprestimo = new Emprestimo(escolhido, cliente);
-                    System.out.println("A devolução deve ser feita na data: " + emprestimo.getDataDevolucao());
-                    crudE.cadastrar(emprestimo);
+                    Cliente cliente = null;
+					try {
+						cliente = crudC.consulta(email, senha);
+					} catch (ClienteInexistenteException e) {
+						// TODO Auto-generated catch block
+						System.out.println("Cliente inválido! Por favor, informe um cliente válido.");
+					}
+					if(cliente!=null) {
+						Emprestimo emprestimo = new Emprestimo(escolhido, cliente);
+	                    System.out.println("A devolução deve ser feita na data: " + emprestimo.getDataDevolucao());
+	                    crudE.cadastrar(emprestimo);
+					}else System.out.println("O cliente não foi autenticado com sucesso!");
+                    
                 }else {
                     System.out.println("Valor inválido para indice");
                 }
